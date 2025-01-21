@@ -1,10 +1,33 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using YG;
 
 public class Slot : MonoBehaviour
 {
+    private GameManager gameManager;
+
+    [Header("Slot Info")]
     public int id;
     public Item currentItem;
     public SlotState state = SlotState.Empty;
+    [Header("Lock Slot")]
+    public TextMeshPro unlockCostText;
+    public int unlockSlotCost = 5000;
+
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+
+        unlockCostText.text = unlockSlotCost.ToString();
+        if (state == SlotState.Lock)
+        {
+            unlockCostText.gameObject.SetActive(true);
+        }
+        else
+        {
+            unlockCostText.gameObject.SetActive(false);
+        }
+    }
 
     public void CreateItem(int id) 
     {
@@ -31,6 +54,21 @@ public class Slot : MonoBehaviour
         ChangeStateTo(SlotState.Empty);
     }
 
+    private void OnMouseDown()
+    {
+        UnlockSlot();
+    }
+
+    private void UnlockSlot()
+    {
+        if (state == SlotState.Lock && YG2.saves.GetCoins() >= unlockSlotCost)
+        {
+            ChangeStateTo(SlotState.Empty);
+            unlockCostText.gameObject.SetActive(false);
+            YG2.saves.SubCoins(unlockSlotCost);
+        }
+    }
+
     private void ReceiveItem(int id)
     {
         switch (state)
@@ -52,7 +90,7 @@ public class Slot : MonoBehaviour
                     //Push item back
                     Debug.Log("Push back");
                 }
-                break;
+            break;
         }
     }
 }

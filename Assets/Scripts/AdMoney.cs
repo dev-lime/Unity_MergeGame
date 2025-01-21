@@ -1,28 +1,15 @@
-using TMPro;
-using UnityEngine;
+using YG;
 
 public class AdMoney : RotatingFallingObject
 {
-    private GameManager gameManager = GameManager.Instance;
-
-    public Vector2 MoneyCountRange = new(50, 500);
-    public TextMeshProUGUI countText;
-
-    private int AddMoneyCount;
-
     private void Start()
     {
-        AddMoneyCount = (int)Random.Range(MoneyCountRange.x, MoneyCountRange.y);
-
-        if (countText != null )
-        {
-            countText.text = AddMoneyCount.ToString();
-        }
+        gameManager = GameManager.Instance;
     }
 
     private void OnMouseDown()
     {
-        gameManager.AddPlayerMoney(AddMoneyCount);
+        YG2.RewardedAdvShow("coins", gameManager.GetReward);
         Destroy(gameObject);
     }
 }

@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class GameController : MonoBehaviour 
 {
     public static GameController instance;
-    public GameManager gameManager = GameManager.Instance;
+    private GameManager gameManager;
 
     [Header("Buttons")]
     public Button addItemButton;
@@ -31,6 +32,8 @@ public class GameController : MonoBehaviour
 
     private void Start() 
     {
+        gameManager = GameManager.Instance;
+
         slotDictionary = new Dictionary<int, Slot>();
 
         for (int i = 0; i < slots.Length; i++)
@@ -40,16 +43,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //handle user input
+    // Handle user input
     private void Update() 
     {
-        if (gameManager.GetPlayerMoney() < addItemCost || AllSlotsOccupied())
+        if (YG2.saves.GetCoins() < addItemCost || AllSlotsOccupied())
         {
-            addItemButton.enabled = false;
+            addItemButton.gameObject.SetActive(false);
         }
         else
         {
-            addItemButton.enabled = true;
+            addItemButton.gameObject.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -64,52 +67,60 @@ public class GameController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            //Drop item
+            // Drop item
             SendRayCast();
         }
+
+        YG2.saves.SetSlots(slots);
     }
 
     void SendRayCast()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-        //we hit something
+        // We hit something
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Slot"))
             {
-                //we are grabbing the item in a full slot
                 var slot = hit.transform.GetComponent<Slot>();
-                if (slot.state == SlotState.Full && carryingItem == null)
+                if (slot.state != SlotState.Lock)
                 {
-                    var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
-                    itemGO.transform.position = slot.transform.position;
-                    itemGO.transform.localScale = Vector3.one * 2;
-
-                    carryingItem = itemGO.GetComponent<ItemInfo>();
-                    carryingItem.InitDummy(slot.id, slot.currentItem.id);
-
-                    slot.ItemGrabbed();
-                }
-                //we are dropping an item to empty slot
-                else if (slot.state == SlotState.Empty && carryingItem != null)
-                {
-                    slot.CreateItem(carryingItem.itemId);
-                    Destroy(carryingItem.gameObject);
-                }
-                //we are dropping to full
-                else if (slot.state == SlotState.Full && carryingItem != null)
-                {
-                    //check item in the slot
-                    if (slot.currentItem.id == carryingItem.itemId)
+                    // We are grabbing the item in a full slot
+                    if (slot.state == SlotState.Full && carryingItem == null)
                     {
-                        print("merged");
-                        OnItemMergedWithTarget(slot.id);
+                        var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
+                        itemGO.transform.position = slot.transform.position;
+                        itemGO.transform.localScale = Vector3.one * 2;
+
+                        carryingItem = itemGO.GetComponent<ItemInfo>();
+                        carryingItem.InitDummy(slot.id, slot.currentItem.id);
+
+                        slot.ItemGrabbed();
                     }
-                    else
+                    // We are dropping an item to empty slot
+                    else if (slot.state == SlotState.Empty && carryingItem != null)
                     {
-                        OnItemCarryFail();
+                        slot.CreateItem(carryingItem.itemId);
+                        Destroy(carryingItem.gameObject);
                     }
+                    // We are dropping to full
+                    else if (slot.state == SlotState.Full && carryingItem != null)
+                    {
+                        // Check item in the slot
+                        if (slot.currentItem.id == carryingItem.itemId)
+                        {
+                            OnItemMergedWithTarget(slot.id);
+                        }
+                        else
+                        {
+                            OnItemCarryFail();
+                        }
+                    }
+                }
+                else if (carryingItem != null)
+                {
+                    OnItemCarryFail();
                 }
                 return;
             }
@@ -156,7 +167,7 @@ public class GameController : MonoBehaviour
 
     int SaleItem()
     {
-        gameManager.AddPlayerMoney((int)(math.pow(carryingItem.itemId + 1, 2)) * multiplierItemCost);
+        YG2.saves.AddCoins((int)(math.pow(carryingItem.itemId + 1, 2)) * multiplierItemCost);
         Destroy(carryingItem.gameObject);
         return 0;
     }
@@ -164,21 +175,20 @@ public class GameController : MonoBehaviour
     public void AddRandomItem()
     {
         PlaceRandomItem();
-        gameManager.SubtractPlayerMoney(addItemCost);
+        YG2.saves.SubCoins(addItemCost);
     }
 
     void PlaceRandomItem()
     {
         if (AllSlotsOccupied())
         {
-            Debug.Log("No empty slot available!");
             return;
         }
 
         var rand = UnityEngine.Random.Range(0, slots.Length);
         var slot = GetSlotById(rand);
 
-        while (slot.state == SlotState.Full)
+        while (slot.state != SlotState.Empty)
         {
             rand = UnityEngine.Random.Range(0, slots.Length);
             slot = GetSlotById(rand);
@@ -193,11 +203,11 @@ public class GameController : MonoBehaviour
         {
             if (slot.state == SlotState.Empty)
             {
-                //empty slot found
+                // Empty slot found
                 return false;
             }
         }
-        //no slot empty
+        // No slot empty
         return true;
     }
 

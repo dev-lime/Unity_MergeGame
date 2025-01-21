@@ -1,0 +1,8 @@
+#unity-progress-bar-empty {
+    border-radius: __ROUND_BAR_EMPTY__px;
+}
+
+#unity-progress-bar-full {
+    border-radius: __ROUND_BAR_FULL__px;
+    transition: width 0.5s ease;
+}

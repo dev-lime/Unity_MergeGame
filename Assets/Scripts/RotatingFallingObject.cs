@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RotatingFallingObject : MonoBehaviour
 {
+    public GameManager gameManager;
+
     private float fallSpeed;
     private float rotationSpeed;
     private bool rotateClockwise;
@@ -15,13 +17,13 @@ public class RotatingFallingObject : MonoBehaviour
 
     private void Start()
     {
-        
+        gameManager = GameManager.Instance;
     }
 
     void Update()
     {
         // Падение вниз
-        transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+        transform.position += fallSpeed * Time.deltaTime * Vector3.down;
 
         // Вращение вокруг оси Z
         float direction = rotateClockwise ? 1f : -1f;

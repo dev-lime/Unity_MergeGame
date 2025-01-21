@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
+using YG;
 
 public class BonusMoney : RotatingFallingObject
 {
-    private GameManager gameManager = GameManager.Instance;
-
     public Vector2 MoneyCountRange = new(50, 500);
     public TextMeshProUGUI countText;
 
@@ -12,6 +11,8 @@ public class BonusMoney : RotatingFallingObject
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
+
         AddMoneyCount = (int)Random.Range(MoneyCountRange.x, MoneyCountRange.y);
 
         if (countText != null )
@@ -22,7 +23,7 @@ public class BonusMoney : RotatingFallingObject
 
     private void OnMouseDown()
     {
-        gameManager.AddPlayerMoney(AddMoneyCount);
+        YG2.saves.AddCoins(AddMoneyCount);
         Destroy(gameObject);
     }
 }

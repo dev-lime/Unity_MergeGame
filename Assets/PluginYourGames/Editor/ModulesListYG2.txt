@@ -1,0 +1,6 @@
+Authorization v1.0
+InterstitialAdv v1.001
+Leaderboards v1.0
+Localization v1.001
+RewardedAdv v1.001
+Storage v1.0

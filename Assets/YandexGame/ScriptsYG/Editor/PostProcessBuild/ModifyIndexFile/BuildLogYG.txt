@@ -1,2 +1,0 @@
-Build path: E:/Works/Unity Projects/Project_Card/Build
-Build number: 2

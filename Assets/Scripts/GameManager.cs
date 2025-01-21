@@ -1,14 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using YG;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    [Header("HUD")]
-    public TextMeshProUGUI PlayerMoneyText;
-
-    private int PlayerMoney = 1000;
 
     private void Awake()
     {
@@ -22,28 +19,18 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        //Screen.SetResolution(720, 1280, true);
-    }
-
     private void Update()
     {
-        PlayerMoneyText.text = PlayerMoney.ToString();
+        YG2.SaveProgress();
     }
 
-    public void AddPlayerMoney(int addMoney)
+    public void GetReward()
     {
-        PlayerMoney += addMoney;
+        YG2.saves.AddCoins(1000);
     }
 
-    public void SubtractPlayerMoney(int subMoney)
+    public void GoToMenuScene()
     {
-        PlayerMoney -= subMoney;
-    }
-
-    public int GetPlayerMoney()
-    {
-        return PlayerMoney;
+        SceneManager.LoadScene(0);
     }
 }
