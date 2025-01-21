@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 08145fbdc07494f3da9fb5cbc4201ff0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157539
+  packageName: Simple Merge System Free
+  packageVersion: 1.0
+  assetPath: Assets/Merge System Free/Scripts/GameController.cs
+  uploadId: 339699

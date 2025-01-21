@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 25e34fbcc4a3e4dc2aa3f3b5d1916000
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157539
+  packageName: Simple Merge System Free
+  packageVersion: 1.0
+  assetPath: Assets/Merge System Free/Scripts/Item.cs
+  uploadId: 339699

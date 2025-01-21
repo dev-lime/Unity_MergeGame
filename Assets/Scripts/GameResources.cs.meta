@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 970abdfc10c6c4a20bf8568ee869bbbf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157539
+  packageName: Simple Merge System Free
+  packageVersion: 1.0
+  assetPath: Assets/Merge System Free/Scripts/GameResources.cs
+  uploadId: 339699

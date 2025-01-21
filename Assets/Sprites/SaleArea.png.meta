@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: 603b0ee5eb69a434d8efa8e4a6e40b50
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1598547390860037052
+    second: SaleArea 1_0
+  - first:
+      213: -3639827048104375963
+    second: SaleArea 1_1
+  - first:
+      213: -8486308243431904429
+    second: SaleArea 1_2
+  - first:
+      213: 1975845760121312033
+    second: SaleArea 1_3
+  - first:
+      213: -2168288423526851186
+    second: SaleArea 1_4
+  - first:
+      213: 7835595891188604112
+    second: SaleArea 1_5
+  - first:
+      213: 4415051814722533872
+    second: SaleArea 1_6
+  - first:
+      213: 3339158674149217710
+    second: SaleArea 1_7
+  - first:
+      213: 4727478649502446758
+    second: SaleArea 1_8
+  - first:
+      213: -7505493150441324418
+    second: SaleArea 1_9
+  - first:
+      213: -7152220527874332301
+    second: SaleArea 1_10
+  - first:
+      213: 4082204761706558983
+    second: SaleArea 1_11
+  - first:
+      213: -7838366341454447216
+    second: SaleArea 1_12
+  - first:
+      213: 6257851362904365705
+    second: SaleArea 1_13
+  - first:
+      213: -6997442404232536577
+    second: SaleArea 1_14
+  - first:
+      213: -7971734442964099001
+    second: SaleArea 1_15
+  - first:
+      213: -2912819634479264777
+    second: SaleArea 1_16
+  - first:
+      213: -1206545490721398988
+    second: SaleArea 1_17
+  - first:
+      213: -7599679651327477815
+    second: SaleArea 1_18
+  - first:
+      213: -7189752392211537770
+    second: SaleArea 1_19
+  - first:
+      213: -274230816144811489
+    second: SaleArea 1_20
+  - first:
+      213: 6960546997280495473
+    second: SaleArea 1_21
+  - first:
+      213: 8178363672861383992
+    second: SaleArea 1_22
+  - first:
+      213: 1819277834935573410
+    second: SaleArea 1_23
+  - first:
+      213: 439719072723074174
+    second: SaleArea 1_24
+  - first:
+      213: -5143053580742865121
+    second: SaleArea 1_25
+  - first:
+      213: -6876334455649457394
+    second: SaleArea 1_26
+  - first:
+      213: -2674645479267298754
+    second: SaleArea 1_27
+  - first:
+      213: -1844895170240001894
+    second: SaleArea 1_28
+  - first:
+      213: 1140290779097193781
+    second: SaleArea 1_29
+  - first:
+      213: 872097026943146398
+    second: SaleArea 1_30
+  - first:
+      213: -1753913668488466982
+    second: SaleArea 1_31
+  - first:
+      213: -7665850547688450497
+    second: SaleArea 1_32
+  - first:
+      213: 6093584072542726045
+    second: SaleArea 1_33
+  - first:
+      213: -2858879438743769058
+    second: SaleArea 1_34
+  - first:
+      213: 7199966222231127838
+    second: SaleArea 1_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.625, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SaleArea 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 202
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb07dce16e2f2610800000000000000
+      internalID: 1598547390860037052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 504
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56941e9959cbc7dc0800000000000000
+      internalID: -3639827048104375963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_2
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 504
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ba5cf6d939a3a80800000000000000
+      internalID: -8486308243431904429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_3
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 504
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1231ef6104d9b6b10800000000000000
+      internalID: 1975845760121312033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_4
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 504
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d1719ba21b8e1e0800000000000000
+      internalID: -2168288423526851186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_5
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 504
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc9ec1c2f0adbc60800000000000000
+      internalID: 7835595891188604112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_6
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 504
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f9fa79cb3a654d30800000000000000
+      internalID: 4415051814722533872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_7
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 504
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea5145d5f13175e20800000000000000
+      internalID: 3339158674149217710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_8
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 504
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a436d2d8c06b9140800000000000000
+      internalID: 4727478649502446758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_9
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 504
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7041d7deb127d790800000000000000
+      internalID: -7505493150441324418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_10
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 490
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3792bc0f2553ebc90800000000000000
+      internalID: -7152220527874332301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_11
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 438
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7067de13a97e6a830800000000000000
+      internalID: 4082204761706558983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_12
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 385
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09dba368757883390800000000000000
+      internalID: -7838366341454447216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_13
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 307
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98adb17b8aa58d650800000000000000
+      internalID: 6257851362904365705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_14
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 333
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffdd677153714ee90800000000000000
+      internalID: -6997442404232536577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_15
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 254
+        width: 17
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 740e06b92c5be5190800000000000000
+      internalID: -7971734442964099001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_16
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 281
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb8418a9f59397d0800000000000000
+      internalID: -2912819634479264777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_17
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 202
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f933cc44d714fe0800000000000000
+      internalID: -1206545490721398988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_18
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 229
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c77cd73f93888690800000000000000
+      internalID: -7599679651327477815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_19
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 150
+        width: 17
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690673fca4ed83c90800000000000000
+      internalID: -7189752392211537770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_20
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 176
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a1931968cb13cf0800000000000000
+      internalID: -274230816144811489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_21
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 97
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177d05f8d94d89060800000000000000
+      internalID: 6960546997280495473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_22
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 123
+        width: 16
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d9cdcfd626f7170800000000000000
+      internalID: 8178363672861383992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_23
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 45
+        width: 17
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab931b4d8f5f3910800000000000000
+      internalID: 1819277834935573410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_24
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 71
+        width: 16
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c7f9aba223a1600800000000000000
+      internalID: 439719072723074174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_25
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f4503740430a8b0800000000000000
+      internalID: -5143053580742865121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_26
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 19
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b2c36be3a5290a0800000000000000
+      internalID: -6876334455649457394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_27
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e321b248b10c1ead0800000000000000
+      internalID: -2674645479267298754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_28
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 0
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a98c20a0e9d9566e0800000000000000
+      internalID: -1844895170240001894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_29
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53dddbc0c6023df00800000000000000
+      internalID: 1140290779097193781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_30
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99de9c10af4a1c00800000000000000
+      internalID: 872097026943146398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_31
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: addea07afc8d8a7e0800000000000000
+      internalID: -1753913668488466982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_32
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f36dbc3da8d6d9590800000000000000
+      internalID: -7665850547688450497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_33
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9723e4cd62c09450800000000000000
+      internalID: 6093584072542726045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_34
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 0
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1072062c483358d0800000000000000
+      internalID: -2858879438743769058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaleArea 1_35
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17c5eec12b6be360800000000000000
+      internalID: 7199966222231127838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SaleArea 1_0: 1598547390860037052
+      SaleArea 1_1: -3639827048104375963
+      SaleArea 1_10: -7152220527874332301
+      SaleArea 1_11: 4082204761706558983
+      SaleArea 1_12: -7838366341454447216
+      SaleArea 1_13: 6257851362904365705
+      SaleArea 1_14: -6997442404232536577
+      SaleArea 1_15: -7971734442964099001
+      SaleArea 1_16: -2912819634479264777
+      SaleArea 1_17: -1206545490721398988
+      SaleArea 1_18: -7599679651327477815
+      SaleArea 1_19: -7189752392211537770
+      SaleArea 1_2: -8486308243431904429
+      SaleArea 1_20: -274230816144811489
+      SaleArea 1_21: 6960546997280495473
+      SaleArea 1_22: 8178363672861383992
+      SaleArea 1_23: 1819277834935573410
+      SaleArea 1_24: 439719072723074174
+      SaleArea 1_25: -5143053580742865121
+      SaleArea 1_26: -6876334455649457394
+      SaleArea 1_27: -2674645479267298754
+      SaleArea 1_28: -1844895170240001894
+      SaleArea 1_29: 1140290779097193781
+      SaleArea 1_3: 1975845760121312033
+      SaleArea 1_30: 872097026943146398
+      SaleArea 1_31: -1753913668488466982
+      SaleArea 1_32: -7665850547688450497
+      SaleArea 1_33: 6093584072542726045
+      SaleArea 1_34: -2858879438743769058
+      SaleArea 1_35: 7199966222231127838
+      SaleArea 1_4: -2168288423526851186
+      SaleArea 1_5: 7835595891188604112
+      SaleArea 1_6: 4415051814722533872
+      SaleArea 1_7: 3339158674149217710
+      SaleArea 1_8: 4727478649502446758
+      SaleArea 1_9: -7505493150441324418
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
