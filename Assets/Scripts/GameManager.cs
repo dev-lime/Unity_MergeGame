@@ -19,11 +19,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
-    {
-        YG2.SaveProgress();
-    }
-
     public void GetReward()
     {
         YG2.saves.AddCoins(1000);

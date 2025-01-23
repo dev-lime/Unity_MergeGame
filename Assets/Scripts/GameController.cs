@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 using YG;
 
 public class GameController : MonoBehaviour 
@@ -10,15 +9,15 @@ public class GameController : MonoBehaviour
     private GameManager gameManager;
 
     [Header("Buttons")]
-    public Button addItemButton;
+    public GameObject addItemButton;
 
     [Header("Slots")]
+    public int scaleModifier = 3;
     public Slot[] slots;
     public GameObject saleArea;
 
     [Header("Costs")]
-    public int addItemCost = 20;
-    public int multiplierItemCost = 100;
+    public int addItemCost = 100;
 
     private Vector3 _target;
     private ItemInfo carryingItem;
@@ -48,11 +47,11 @@ public class GameController : MonoBehaviour
     {
         if (YG2.saves.GetCoins() < addItemCost || AllSlotsOccupied())
         {
-            addItemButton.gameObject.SetActive(false);
+            addItemButton.SetActive(false);
         }
         else
         {
-            addItemButton.gameObject.SetActive(true);
+            addItemButton.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -70,8 +69,6 @@ public class GameController : MonoBehaviour
             // Drop item
             SendRayCast();
         }
-
-        YG2.saves.SetSlots(slots);
     }
 
     void SendRayCast()
@@ -91,7 +88,7 @@ public class GameController : MonoBehaviour
                     {
                         var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
                         itemGO.transform.position = slot.transform.position;
-                        itemGO.transform.localScale = Vector3.one * 2;
+                        itemGO.transform.localScale = Vector3.one * scaleModifier;
 
                         carryingItem = itemGO.GetComponent<ItemInfo>();
                         carryingItem.InitDummy(slot.id, slot.currentItem.id);
@@ -167,9 +164,18 @@ public class GameController : MonoBehaviour
 
     int SaleItem()
     {
-        YG2.saves.AddCoins((int)(math.pow(carryingItem.itemId + 1, 2)) * multiplierItemCost);
+        YG2.saves.AddCoins((int)(math.pow(carryingItem.itemId + 1, 2)) * 100);
         Destroy(carryingItem.gameObject);
         return 0;
+    }
+
+    public void Upgrade()
+    {
+        if (YG2.saves.GetCoins() >= YG2.saves.GetUpgradeCost()) // && YG2.saves.GetUpgrade() < slots.Length)
+        {
+            YG2.saves.Upgrade();
+            YG2.saves.SubCoins(YG2.saves.GetUpgradeCost());
+        }
     }
 
     public void AddRandomItem()
@@ -194,7 +200,7 @@ public class GameController : MonoBehaviour
             slot = GetSlotById(rand);
         }
 
-        slot.CreateItem(0);
+        slot.CreateItem(YG2.saves.GetUpgrade());
     }
 
     bool AllSlotsOccupied()

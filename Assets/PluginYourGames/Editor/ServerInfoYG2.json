@@ -28,6 +28,14 @@
             "platform": true
         },
         {
+            "name": "GameMonetize",
+            "version": "1.0",
+            "download": "https://boosty.to/maximalist/posts/bfb0202f-04a3-4bb2-993d-91c9e632d831",
+            "noLoad": true,
+            "doc": "https://max-games.ru/gamemonetize/",
+            "platform": true
+        },
+        {
             "name": "InterstitialAdv",
             "version": "1.001",
             "download": "https://max-games.ru/public/pluginYG2/modules/InterstitialAdv.unitypackage",

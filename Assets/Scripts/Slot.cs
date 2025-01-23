@@ -4,8 +4,6 @@ using YG;
 
 public class Slot : MonoBehaviour
 {
-    private GameManager gameManager;
-
     [Header("Slot Info")]
     public int id;
     public Item currentItem;
@@ -16,8 +14,6 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
-
         unlockCostText.text = unlockSlotCost.ToString();
         if (state == SlotState.Lock)
         {
