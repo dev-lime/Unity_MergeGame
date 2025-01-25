@@ -4,20 +4,13 @@ using YG;
 
 public class WriteText : MonoBehaviour
 {
+    [Header("Texts")]
+    public TextMeshProUGUI upgradeText;
     public TextMeshProUGUI coinsText;
-
-    private GameManager gameManager;
-
-    void Start()
-    {
-        gameManager = GameManager.Instance;
-    }
 
     void Update()
     {
-        if (coinsText != null)
-        {
-            coinsText.text = YG2.saves.GetCoins().ToString();
-        }
+        upgradeText.text = YG2.saves.GetUpgrade().ToString();
+        coinsText.text = YG2.saves.GetCoins().ToString();
     }
 }

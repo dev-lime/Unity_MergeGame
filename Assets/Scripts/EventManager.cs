@@ -59,7 +59,7 @@ public class EventManager : MonoBehaviour
     void SpawnObject()
     {
         float spawnX = Random.Range(spawnRangeX.x, spawnRangeX.y);
-        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
+        Vector3 spawnPosition = new(spawnX, spawnY, -2f);
 
         // Выбор случайного объекта из массива
         GameObject randomPrefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];

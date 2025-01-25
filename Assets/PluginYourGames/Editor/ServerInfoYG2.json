@@ -25,7 +25,8 @@
             "download": "https://boosty.to/maximalist/posts/75f8b5d7-6d88-4de7-a94d-e27750bc445d?share=post_link",
             "noLoad": true,
             "doc": "https://max-games.ru/crazy/",
-            "platform": true
+            "platform": true,
+            "critical": true
         },
         {
             "name": "GameMonetize",
@@ -61,7 +62,7 @@
         },
         {
             "name": "Storage",
-            "version": "1.0",
+            "version": "1.01",
             "download": "https://max-games.ru/public/pluginYG2/modules/Storage.unitypackage",
             "doc": "https://max-games.ru/plugin-yg/doc/storage/"
         },

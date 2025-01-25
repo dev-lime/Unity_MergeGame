@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using YG;
@@ -17,7 +18,8 @@ public class GameController : MonoBehaviour
     public GameObject saleArea;
 
     [Header("Costs")]
-    public int addItemCost = 100;
+    public TextMeshPro addItemCostText;
+    public TextMeshPro upgradeCostText;
 
     private Vector3 _target;
     private ItemInfo carryingItem;
@@ -32,6 +34,8 @@ public class GameController : MonoBehaviour
     private void Start() 
     {
         gameManager = GameManager.Instance;
+        addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
+        upgradeCostText.text = YG2.saves.GetUpgradeCost().ToString();
 
         slotDictionary = new Dictionary<int, Slot>();
 
@@ -45,7 +49,7 @@ public class GameController : MonoBehaviour
     // Handle user input
     private void Update() 
     {
-        if (YG2.saves.GetCoins() < addItemCost || AllSlotsOccupied())
+        if (YG2.saves.GetCoins() < YG2.saves.GetAddItemCost() || AllSlotsOccupied())
         {
             addItemButton.SetActive(false);
         }
@@ -164,7 +168,7 @@ public class GameController : MonoBehaviour
 
     int SaleItem()
     {
-        YG2.saves.AddCoins((int)(math.pow(carryingItem.itemId + 1, 2)) * 100);
+        YG2.saves.AddCoins(YG2.saves.GetItemCost(carryingItem.itemId));
         Destroy(carryingItem.gameObject);
         return 0;
     }
@@ -175,13 +179,16 @@ public class GameController : MonoBehaviour
         {
             YG2.saves.Upgrade();
             YG2.saves.SubCoins(YG2.saves.GetUpgradeCost());
+            addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
+            upgradeCostText.text = YG2.saves.GetUpgradeCost().ToString();
         }
     }
 
     public void AddRandomItem()
     {
         PlaceRandomItem();
-        YG2.saves.SubCoins(addItemCost);
+        addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
+        YG2.saves.SubCoins(YG2.saves.GetAddItemCost());
     }
 
     void PlaceRandomItem()
