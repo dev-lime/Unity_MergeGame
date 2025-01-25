@@ -1,17 +1,19 @@
 using Unity.Mathematics;
+using YG.Utils.LB;
 
 namespace YG
 {
     public partial class SavesYG
     {
-        private int coins = 2000;
-        private int upgrade = 0;
-        private Slot[] slots = null;
+        public int coins = 2000;
+        public int upgrade = 0;
+        public Slot[] slots = null;
 
         public void AddCoins(int addMoney)
         {
             coins += addMoney;
             YG2.SaveProgress();
+            UpdateRecord(YG2.saves.GetCoins());
         }
 
         public void SubCoins(int subMoney)
@@ -66,6 +68,11 @@ namespace YG
         {
             YG2.SetDefaultSaves();
             YG2.SaveProgress();
+        }
+
+        public void UpdateRecord(int coins)
+        {
+            YG2.SetLeaderboard("score", coins);
         }
     }
 }

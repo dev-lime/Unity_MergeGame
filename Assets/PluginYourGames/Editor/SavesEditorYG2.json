@@ -7,5 +7,8 @@
         false,
         false
     ],
-    "idSave": 21722
+    "idSave": 4,
+    "coins": 4200,
+    "upgrade": 0,
+    "slots": []
 }

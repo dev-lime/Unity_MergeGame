@@ -68,6 +68,16 @@ namespace YG
 
         public static void SaveProgress()
         {
+            if (!_SDKEnabled)
+            {
+#if RU_YG2
+                Debug.LogError("Не используйте методы сохранения прогресса до полной инициализации PluginYG2.");
+#else
+                Debug.LogError("Do not use methods to save progress until PluginYG2 is fully initialized.");
+#endif
+                return;
+            }
+
             saves.idSave++;
 #if !UNITY_EDITOR
             if (infoYG.Storage.saveLocal)
@@ -206,11 +216,13 @@ namespace YG.Insides
 
             if (data != InfoYG.NO_DATA && !string.IsNullOrEmpty(data))
             {
+#if YandexGamesPlatform_yg
                 data = data.Remove(0, 2);
                 data = data.Remove(data.Length - 2, 2);
                 data = data.Replace(@"\\\", '\u0002'.ToString());
                 data = data.Replace(@"\", "");
                 data = data.Replace('\u0002'.ToString(), @"\");
+#endif
                 try
                 {
 #if NJSON_STORAGE_YG2
