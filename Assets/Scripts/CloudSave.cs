@@ -1,5 +1,4 @@
 using Unity.Mathematics;
-using YG.Utils.LB;
 
 namespace YG
 {
@@ -40,17 +39,18 @@ namespace YG
 
         public int GetUpgradeCost()
         {
-            return (int)(math.pow((GetUpgrade() + 1), 2) * 100);
+            return (int)(math.pow(GetUpgrade() + 1, 2) * 1000);
         }
 
         public int GetAddItemCost()
         {
-            return (int)((upgrade + 1) * 100);
+            return (int)(math.pow(upgrade + 1, 2)) * 100;
+            //return (upgrade + 1) * 100;
         }
 
         public int GetItemCost(int itemId)
         {
-            return (int)(math.pow(itemId + 1, 2)) * 100;
+            return (int)((int)math.pow(itemId + 1, 3) / math.sqrt(upgrade + 1) * 100);
         }
 
         public void SetSlots(Slot[] slots)

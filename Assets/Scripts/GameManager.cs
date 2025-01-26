@@ -22,9 +22,4 @@ public class GameManager : MonoBehaviour
     {
         YG2.saves.AddCoins(1000);
     }
-
-    public void GoToMenuScene()
-    {
-        SceneManager.LoadScene(0);
-    }
 }

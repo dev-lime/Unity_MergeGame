@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [Header("Costs")]
     public TextMeshPro addItemCostText;
     public TextMeshPro upgradeCostText;
+    public TextMeshPro saleItemCostText;
 
     private Vector3 _target;
     private ItemInfo carryingItem;
@@ -71,6 +72,15 @@ public class GameController : MonoBehaviour
         {
             // Drop item
             SendRayCast();
+        }
+
+        if (carryingItem != null)
+        {
+            saleItemCostText.text = "+" + YG2.saves.GetItemCost(carryingItem.itemId).ToString();
+        }
+        else
+        {
+            saleItemCostText.text = "";
         }
     }
 
@@ -176,8 +186,8 @@ public class GameController : MonoBehaviour
     {
         if (YG2.saves.GetCoins() >= YG2.saves.GetUpgradeCost()) // && YG2.saves.GetUpgrade() < slots.Length)
         {
-            YG2.saves.Upgrade();
             YG2.saves.SubCoins(YG2.saves.GetUpgradeCost());
+            YG2.saves.Upgrade();
             addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
             upgradeCostText.text = YG2.saves.GetUpgradeCost().ToString();
         }
@@ -188,6 +198,11 @@ public class GameController : MonoBehaviour
         PlaceRandomItem();
         addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
         YG2.saves.SubCoins(YG2.saves.GetAddItemCost());
+    }
+
+    public void ResetSaves()
+    {
+        YG2.saves.ResetSaves();
     }
 
     void PlaceRandomItem()

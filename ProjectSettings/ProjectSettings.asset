@@ -627,7 +627,7 @@ PlayerSettings:
   webWasm2023: 0
   scriptingDefineSymbols:
     Standalone: YG_PLUGIN_YANDEX_GAME
-    WebGL: YG_PLUGIN_YANDEX_GAME;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;RU_YG2;Authorization_yg;RewardedAdv_yg;Leaderboards_yg;InterstitialAdv_yg;Localization_yg;Storage_yg
+    WebGL: YG_PLUGIN_YANDEX_GAME;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;RU_YG2;Authorization_yg;RewardedAdv_yg;Leaderboards_yg;InterstitialAdv_yg;Storage_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

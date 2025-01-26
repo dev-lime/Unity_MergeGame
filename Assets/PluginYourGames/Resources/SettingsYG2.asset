@@ -30,100 +30,8 @@ MonoBehaviour:
     enable: 1
     saveScoreAnonymousPlayers: 1
     listLBSim:
-    - technoName: test
-      entries: '1. Max: 10
-
-        2. Masha: 15
-
-        3. anonymous: 23
-
-        4.
-        Player 4: 30
-
-        5. Player current: 40
-
-        6. Player 6: 50
-
-        7.
-        Player 7: 60
-
-        8. Player 8: 70
-
-        9. Player 9: 80
-
-        10.
-        Player 10: 90'
-      isDefault: 0
-      isInvertSortOrder: 0
-      decimalOffset: 0
-      type: numeric
-      players:
-      - rank: 1
-        name: Max
-        score: 100
-        photo: demo image
-        uniqueID: 123
-        extraData: 
-      - rank: 2
-        name: Masha
-        score: 90
-        photo: demo image
-        uniqueID: 321
-        extraData: 
-      - rank: 3
-        name: anonymous
-        score: 80
-        photo: anonymous
-        uniqueID: 456
-        extraData: 
-      - rank: 4
-        name: Player 4
-        score: 70
-        photo: demo image
-        uniqueID: 321
-        extraData: 
-      - rank: 5
-        name: Player current
-        score: 60
-        photo: demo image
-        uniqueID: 000
-        extraData: 
-      - rank: 6
-        name: Player 6
-        score: 50
-        photo: demo image
-        uniqueID: 326
-        extraData: 
-      - rank: 7
-        name: Player 7
-        score: 40
-        photo: demo image
-        uniqueID: 327
-        extraData: 
-      - rank: 8
-        name: Player 8
-        score: 30
-        photo: demo image
-        uniqueID: 328
-        extraData: 
-      - rank: 9
-        name: Player 9
-        score: 20
-        photo: demo image
-        uniqueID: 329
-        extraData: 
-      - rank: 10
-        name: Player 10
-        score: 10
-        photo: demo image
-        uniqueID: 330
-        extraData: 
-      currentPlayer:
-        rank: 5
-        score: 60
-        extraData: 
-    - technoName: time
-      entries: '1. Max: 7123
+    - technoName: score
+      entries: '1. Max: 7000123
 
         2. Maria: 15321
 
@@ -136,11 +44,29 @@ MonoBehaviour:
 
         6. Player 6:
         340000'
-      isDefault: 0
-      isInvertSortOrder: 1
+      isDefault: 1
+      isInvertSortOrder: 0
       decimalOffset: 0
       type: numeric
       players:
+      - rank: 1
+        name: Max
+        score: 7123
+        photo: demo image
+        uniqueID: 789
+        extraData: 
+      - rank: 1
+        name: Max
+        score: 7123
+        photo: demo image
+        uniqueID: 789
+        extraData: 
+      - rank: 1
+        name: Max
+        score: 7123
+        photo: demo image
+        uniqueID: 789
+        extraData: 
       - rank: 1
         name: Max
         score: 7123
@@ -152,6 +78,12 @@ MonoBehaviour:
         score: 15321
         photo: demo image
         uniqueID: 987
+        extraData: 
+      - rank: 3
+        name: anonymous
+        score: 62000
+        photo: anonymous
+        uniqueID: 891
         extraData: 
       - rank: 3
         name: anonymous
@@ -177,12 +109,22 @@ MonoBehaviour:
         photo: demo image
         uniqueID: 321
         extraData: 
+      - rank: 6
+        name: Player 6
+        score: 340000
+        photo: demo image
+        uniqueID: 321
+        extraData: 
+      - rank: 6
+        name: Player 6
+        score: 340000
+        photo: demo image
+        uniqueID: 321
+        extraData: 
       currentPlayer:
         rank: 5
         score: 127000
         extraData: 
-  Localization:
-    setLanguageMod: 1
   RewardedAdv:
     rewardedAfterClosing: 1
     skipInterAdvAfterReward: 1
@@ -245,6 +187,8 @@ MonoBehaviour:
     interAdvInterval: 0
     postponeCallByFail: 0
     skipInterAdvAfterReward: 0
+    saveLocal: 0
+    saveCloud: 0
     selectWebGLTemplate: 1
     runInBackground: 1
     enableExceptions: 1

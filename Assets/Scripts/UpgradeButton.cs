@@ -5,9 +5,14 @@ using YG;
 public class UpgradeButton : MonoBehaviour
 {
     public GameController gameController;
+    public AudioSource clickSound;
 
     private void OnMouseDown()
     {
-        gameController.Upgrade();
+        if (YG2.saves.GetCoins() >= YG2.saves.GetUpgradeCost())
+        {
+            gameController.Upgrade();
+            clickSound.Play();
+        }
     }
 }
