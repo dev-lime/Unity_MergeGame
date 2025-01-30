@@ -7,19 +7,17 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    [Header("Buttons")]
-    public GameObject addItemButton;
-
     [Header("Slots")]
-    public int maxItemId = 51;
+    public int maxItemId = YG2.saves.GetMaxLevel();
     public int scaleModifier = 3;
     public Slot[] slots;
-    public GameObject saleArea;
 
     [Header("Prices")]
     public TextMeshPro addItemCostText;
     public TextMeshPro upgradeCostText;
     public TextMeshPro saleItemCostText;
+
+    private GameManager gameManager;
 
     private Vector3 _target;
     private ItemInfo carryingItem;
@@ -33,6 +31,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
+
         addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
         upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
 
@@ -57,15 +57,6 @@ public class GameController : MonoBehaviour
     // Handle user input
     private void Update() 
     {
-        if (YG2.saves.GetCoins() < YG2.saves.GetAddItemCost() || AllSlotsOccupied())
-        {
-            addItemButton.SetActive(false);
-        }
-        else
-        {
-            addItemButton.SetActive(true);
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             SendRayCast();
@@ -145,7 +136,7 @@ public class GameController : MonoBehaviour
             }
             else if (hit.collider.CompareTag("SaleArea") && carryingItem != null)
             {
-                SaleItem();
+                SellItem();
                 return;
             }
         }
@@ -184,11 +175,11 @@ public class GameController : MonoBehaviour
         Destroy(carryingItem.gameObject);
     }
 
-    int SaleItem()
+    void SellItem()
     {
         YG2.saves.AddCoins(YG2.saves.GetItemSalePrice(carryingItem.itemId));
+        gameManager.PlayAddCoinsSound();
         Destroy(carryingItem.gameObject);
-        return 0;
     }
 
     public void Upgrade()
@@ -232,10 +223,29 @@ public class GameController : MonoBehaviour
             slot = GetSlotById(rand);
         }
 
-        slot.CreateItem(YG2.saves.GetLevel());
+        slot.CreateItem(0);
     }
 
-    bool AllSlotsOccupied()
+    public void PlaceRandomItemToRandomSlot()
+    {
+        if (AllSlotsOccupied())
+        {
+            return;
+        }
+
+        var rand = Random.Range(0, slots.Length);
+        var slot = GetSlotById(rand);
+
+        while (slot.state != SlotState.Empty)
+        {
+            rand = Random.Range(0, slots.Length);
+            slot = GetSlotById(rand);
+        }
+
+        slot.CreateItem(Random.Range(0, YG2.saves.GetLevel()));
+    }
+
+    public bool AllSlotsOccupied()
     {
         foreach (var slot in slots)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7902946856644752586}
   - component: {fileID: 6308409193769509762}
   m_Layer: 0
-  m_Name: AdMoney
+  m_Name: BonusAdv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

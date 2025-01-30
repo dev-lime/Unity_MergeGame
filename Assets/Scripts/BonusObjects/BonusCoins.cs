@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using YG;
 
@@ -10,14 +9,13 @@ public class BonusCoins : BonusObject
 
     private void Start()
     {
-        //gameManager = GameManager.Instance;
-
         AddMoneyCount = (int)Random.Range(MoneyCountRange.x, MoneyCountRange.y);
     }
 
     private void OnMouseDown()
     {
         YG2.saves.AddCoins(AddMoneyCount);
+        gameManager.PlayClickSound();
         Destroy(gameObject);
     }
 }

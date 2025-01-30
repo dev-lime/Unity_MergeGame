@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BonusObject : MonoBehaviour
 {
-    public GameManager gameManager;
+    protected GameManager gameManager;
 
     private float fallSpeed;
     private float rotationSpeed;
@@ -45,7 +45,7 @@ public class BonusObject : MonoBehaviour
             print("Trans: " + transform.position.y + "\tscreenBottomY: " + screenBottomY);
             Destroy(gameObject);
         }*/
-        if (transform.position.y < -18)
+        if (transform.position.y < -20)
         {
             print("Trans: " + transform.position.y + "\tscreenBottomY: " + screenBottomY);
             Destroy(gameObject);
