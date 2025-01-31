@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     [Header("Prices")]
     public TextMeshPro addItemCostText;
     public TextMeshPro upgradeCostText;
-    public TextMeshPro saleItemCostText;
+    public TextMeshPro saleItemPriceText;
 
     private GameManager gameManager;
 
@@ -76,12 +76,14 @@ public class GameController : MonoBehaviour
 
         if (carryingItem != null)
         {
-            saleItemCostText.text = "+" + YG2.saves.GetItemSalePrice(carryingItem.itemId).ToString();
+            saleItemPriceText.text = "+" + YG2.saves.GetItemSalePrice(carryingItem.itemId).ToString();
         }
         else
         {
-            saleItemCostText.text = "";
+            saleItemPriceText.text = "";
         }
+
+        upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
     }
 
     void SendRayCast()
@@ -190,8 +192,7 @@ public class GameController : MonoBehaviour
         {
             YG2.saves.SubCoins(addLevelCost);
             YG2.saves.AddLevel();
-            addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
-            upgradeCostText.text = addLevelCost.ToString();
+            //upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
         }
     }
 

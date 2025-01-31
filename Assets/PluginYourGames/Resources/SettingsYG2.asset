@@ -161,14 +161,14 @@ MonoBehaviour:
       angleInclination: 140
       color1: {r: 0.6996093, g: 0.56078434, b: 0.1490196, a: 1}
       color2: {r: 0.07008721, g: 0.5943396, b: 0.07429342, a: 1}
-    customProgressBar: 0
+    customProgressBar: 1
     progressBarSettigs:
       round: 1
-      roundAngle: 10
+      roundAngle: 20
       width: 30
-      height: 24
-      color1: {r: 0.25, g: 0.6392, b: 1, a: 1}
-      color2: {r: 1, g: 0.831, b: 0.149, a: 0.7}
+      height: 20
+      color1: {r: 1, g: 1, b: 1, a: 1}
+      color2: {r: 1, g: 1, b: 1, a: 1}
     fixedAspectRatio: 1
     aspectRatio: 9/16
     fillBackground: 1

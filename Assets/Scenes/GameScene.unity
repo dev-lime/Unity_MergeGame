@@ -3370,6 +3370,7 @@ MonoBehaviour:
   - {fileID: 5076615421019335775, guid: 37fdc55dd33a7fe4b80f7e85d97dc985, type: 3}
   - {fileID: 5076615421019335775, guid: 7ba0373ab955f8c42959a45bfcce53a2, type: 3}
   - {fileID: 5076615421019335775, guid: d411c3e938547fc47a5acb5390f9a94d, type: 3}
+  - {fileID: 5076615421019335775, guid: 9b16c91e19f22a04b947b8799df340cd, type: 3}
   spawnY: 0
   spawnIntervalRange: {x: 16, y: 32}
   fallSpeedRange: {x: 1, y: 5}
@@ -7165,7 +7166,7 @@ MonoBehaviour:
   - {fileID: 521352500}
   addItemCostText: {fileID: 2008689392}
   upgradeCostText: {fileID: 1738708788}
-  saleItemCostText: {fileID: 1746609090}
+  saleItemPriceText: {fileID: 1746609090}
 --- !u!4 &1917364461
 Transform:
   m_ObjectHideFlags: 0

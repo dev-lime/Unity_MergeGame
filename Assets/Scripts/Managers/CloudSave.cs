@@ -52,7 +52,7 @@ namespace YG
 
         public int GetItemSalePrice(int itemId)
         {
-            return (int)(math.pow(itemId + 1, 2) * GetLevel() * 20);
+            return (int)(math.pow(itemId + 1, 2) * GetLevel() * 50);
         }
 
         public void SetSlots(Slot[] slots)
