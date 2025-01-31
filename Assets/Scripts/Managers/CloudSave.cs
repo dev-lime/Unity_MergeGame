@@ -4,7 +4,7 @@ namespace YG
 {
     public partial class SavesYG
     {
-        public int coins = 2000;
+        public int coins = 1500;
         public int level = 1;
         public Slot[] slots = null;
 
@@ -42,7 +42,7 @@ namespace YG
 
         public int GetAddLevelCost()
         {
-            return (int)(math.pow(GetLevel() + 1, 2) * 3000);
+            return (int)(math.pow(GetLevel(), 3) * 1000);
         }
 
         public int GetAddItemCost()
@@ -52,7 +52,7 @@ namespace YG
 
         public int GetItemSalePrice(int itemId)
         {
-            return (int)(math.pow(itemId + 1, 2) * GetLevel() * 100);
+            return (int)(math.pow(itemId + 1, 2) * GetLevel() * 20);
         }
 
         public void SetSlots(Slot[] slots)

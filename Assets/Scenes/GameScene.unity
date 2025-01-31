@@ -3334,8 +3334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1dd993fc6555f408d8d98f6d70fabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeText: {fileID: 109569784}
+  levelText: {fileID: 109569784}
   coinsText: {fileID: 592076588}
+  duration: 1
 --- !u!1 &713001335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,7 +3371,7 @@ MonoBehaviour:
   - {fileID: 5076615421019335775, guid: 7ba0373ab955f8c42959a45bfcce53a2, type: 3}
   - {fileID: 5076615421019335775, guid: d411c3e938547fc47a5acb5390f9a94d, type: 3}
   spawnY: 0
-  spawnIntervalRange: {x: 4, y: 12}
+  spawnIntervalRange: {x: 16, y: 32}
   fallSpeedRange: {x: 1, y: 5}
   rotationSpeedRange: {x: 20, y: 100}
 --- !u!4 &713001337

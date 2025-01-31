@@ -9,6 +9,8 @@ public class BonusCoins : BonusObject
 
     private void Start()
     {
+        //gameManager = GameManager.Instance;
+
         AddMoneyCount = (int)Random.Range(MoneyCountRange.x, MoneyCountRange.y);
     }
 
