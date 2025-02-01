@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2297345813295550790}
   - component: {fileID: -8600225704388865196}
-  - component: {fileID: 7902946856644752586}
+  - component: {fileID: 1314634036010228797}
   - component: {fileID: -8392627795925835107}
   m_Layer: 0
   m_Name: BonusItem
@@ -89,8 +89,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7902946856644752586
-CircleCollider2D:
+--- !u!61 &1314634036010228797
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,7 +124,17 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2.56
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.78}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.28, y: 1.78}
+  m_EdgeRadius: 0
 --- !u!114 &-8392627795925835107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,3 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2216299bd7be645b015961996fad0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 7279234096973901286, guid: a1b463132f09d55409a4d53ea4371860,
+    type: 3}
