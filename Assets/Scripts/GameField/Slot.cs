@@ -8,12 +8,17 @@ public class Slot : MonoBehaviour
     public int id;
     public Item currentItem;
     public SlotState state = SlotState.Empty;
+
     [Header("Lock Slot")]
-    public TextMeshPro unlockCostText;
-    public int unlockSlotCost = 5000;
+    [SerializeField] private TextMeshPro unlockCostText;
+    [SerializeField] private int unlockSlotCost = 5000;
+
+    private GameManager gameManager;
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
+
         unlockCostText.text = unlockSlotCost.ToString();
         if (state == SlotState.Lock)
         {
@@ -22,6 +27,15 @@ public class Slot : MonoBehaviour
         else
         {
             unlockCostText.gameObject.SetActive(false);
+        }
+    }
+
+    public void LoadSlot(int id, Item currentItem, SlotState state)
+    {
+        if (this.id == id)
+        {
+            this.currentItem = currentItem;
+            this.state = state;
         }
     }
 
@@ -52,16 +66,31 @@ public class Slot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        UnlockSlot();
+        if (state == SlotState.Lock)
+        {
+            if (UnlockSlot())
+            {
+                gameManager.PlayClickSound();
+            }
+            else
+            {
+                gameManager.PlayErrorSound();
+            }
+        }
     }
 
-    private void UnlockSlot()
+    private bool UnlockSlot()
     {
         if (state == SlotState.Lock && YG2.saves.GetCoins() >= unlockSlotCost)
         {
             ChangeStateTo(SlotState.Empty);
             unlockCostText.gameObject.SetActive(false);
             YG2.saves.SubCoins(unlockSlotCost);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -89,11 +118,4 @@ public class Slot : MonoBehaviour
             break;
         }
     }
-}
-
-public enum SlotState
-{
-    Empty,
-    Full,
-    Lock
 }

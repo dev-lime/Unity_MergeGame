@@ -1,18 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
+using YG;
 
 public class EventManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class SpawnableObject
+    {
+        public GameObject prefab;
+        public float spawnChance; // Шанс появления объекта
+    }
+
     [Header("Spawner Settings")]
-    public GameObject[] objectPrefabs; // Массив префабов объектов, которые будут спавниться
-    public float spawnY = 6f; // Высота спавна над экраном
-    public Vector2 spawnIntervalRange = new Vector2(5f, 15f); // Диапазон времени между спавнами
+    public SpawnableObject[] spawnableObjects; // Массив объектов с шансами спавна
 
     [Header("Object Settings")]
     public Vector2 fallSpeedRange = new Vector2(1f, 5f); // Диапазон скорости падения объекта
     public Vector2 rotationSpeedRange = new Vector2(50f, 200f); // Диапазон скорости вращения
 
+    private float spawnY;
     private Vector2 spawnRangeX;
+    private Vector2 spawnIntervalRange = new Vector2(YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1,
+                                                    (YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1) * 2); // Диапазон времени между спавнами
 
     void Start()
     {
@@ -49,6 +59,9 @@ public class EventManager : MonoBehaviour
     {
         while (true)
         {
+            spawnIntervalRange = new Vector2(YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1,
+                                            (YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1) * 2);
+
             float waitTime = Random.Range(spawnIntervalRange.x, spawnIntervalRange.y);
             yield return new WaitForSeconds(waitTime);
 
@@ -61,14 +74,36 @@ public class EventManager : MonoBehaviour
         float spawnX = Random.Range(spawnRangeX.x, spawnRangeX.y);
         Vector3 spawnPosition = new(spawnX, spawnY, -2f);
 
-        // Выбор случайного объекта из массива
-        GameObject randomPrefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
+        GameObject selectedPrefab = GetRandomObjectByChance();
+        if (selectedPrefab == null)
+        {
+            Debug.LogWarning("No object selected for spawning.");
+            return;
+        }
 
-        GameObject newObject = Instantiate(randomPrefab, spawnPosition, Quaternion.identity);
-        BonusObject bonusObject = newObject.AddComponent<BonusObject>();
+        GameObject newObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+        BonusObject fallingObject = newObject.AddComponent<BonusObject>();
         float randomFallSpeed = Random.Range(fallSpeedRange.x, fallSpeedRange.y);
         float randomRotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
         bool randomDirection = Random.value > 0.5f;
-        bonusObject.Initialize(randomFallSpeed, randomRotationSpeed, randomDirection);
+        fallingObject.Initialize(randomFallSpeed, randomRotationSpeed, randomDirection);
+    }
+
+    GameObject GetRandomObjectByChance()
+    {
+        float totalWeight = spawnableObjects.Sum(obj => obj.spawnChance);
+        float randomPoint = Random.Range(0f, totalWeight);
+        float currentWeight = 0f;
+
+        foreach (var obj in spawnableObjects)
+        {
+            currentWeight += obj.spawnChance;
+            if (randomPoint <= currentWeight)
+            {
+                return obj.prefab;
+            }
+        }
+
+        return null;
     }
 }

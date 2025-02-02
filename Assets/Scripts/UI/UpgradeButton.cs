@@ -16,7 +16,7 @@ public class UpgradeButton : MonoBehaviour
         if (YG2.saves.GetCoins() >= YG2.saves.GetAddLevelCost() && YG2.saves.GetLevel() < YG2.saves.GetMaxLevel())
         {
             gameController.Upgrade();
-            gameManager.PlayClickSound();
+            gameManager.PlayAddLevelSound();
         }
         else
         {

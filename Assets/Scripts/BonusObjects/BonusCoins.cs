@@ -3,7 +3,7 @@ using YG;
 
 public class BonusCoins : BonusObject
 {
-    public Vector2 MoneyCountRange = new(YG2.saves.GetAddItemCost() * 2, YG2.saves.GetAddItemCost() * 100);
+    //public Vector2 MoneyCountRange = new(YG2.saves.GetAddItemCost() * 2, YG2.saves.GetAddItemCost() * 100);
     public ParticleSystem particlePrefab;
 
     private int AddMoneyCount;
@@ -12,7 +12,7 @@ public class BonusCoins : BonusObject
     {
         gameManager = GameManager.Instance;
 
-        AddMoneyCount = (int)Random.Range(MoneyCountRange.x, MoneyCountRange.y);
+        AddMoneyCount = (int)Random.Range(100, YG2.saves.GetLevel() * 100);
     }
 
     private void OnMouseDown()

@@ -7,29 +7,37 @@ public class BonusLevel : BonusObject
 
     private void OnMouseDown()
     {
-        YG2.saves.AddLevel();
-        gameManager.PlayClickSound();
-
-        ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (spriteRenderer != null && spriteRenderer.sprite != null)
+        if (YG2.saves.GetLevel() < YG2.saves.GetMaxLevel())
         {
-            Texture2D texture = spriteRenderer.sprite.texture;
-            var renderer = spawnedParticles.GetComponent<ParticleSystemRenderer>();
+            YG2.saves.AddLevel();
+            gameManager.PlayAddLevelSound();
 
-            if (renderer != null && texture != null)
+            ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+            if (spriteRenderer != null && spriteRenderer.sprite != null)
             {
-                renderer.material = new Material(Shader.Find("Sprites/Default"));
-                renderer.material.mainTexture = texture;
+                Texture2D texture = spriteRenderer.sprite.texture;
+                var renderer = spawnedParticles.GetComponent<ParticleSystemRenderer>();
+
+                if (renderer != null && texture != null)
+                {
+                    renderer.material = new Material(Shader.Find("Sprites/Default"));
+                    renderer.material.mainTexture = texture;
+                }
             }
+            else
+            {
+                Debug.LogWarning("SpriteRenderer отсутствует или у объекта нет спрайта!", this);
+            }
+
+            spawnedParticles.Play();
         }
         else
         {
-            Debug.LogWarning("SpriteRenderer отсутствует или у объекта нет спрайта!", this);
+            gameManager.PlayErrorSound();
         }
-
-        spawnedParticles.Play();
+        
         Destroy(gameObject); // ”ничтожаем объект
     }
 }

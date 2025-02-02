@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource clickSound;
-    [SerializeField] private AudioSource addCoinsSound;
+    [SerializeField] private AudioSource addLevelSound;
     [SerializeField] private AudioSource addItemSound;
     [SerializeField] private AudioSource errorSound;
 
@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        //if (YG2.saves.GetCoins() < 0);
+    }
+
     public void GetReward()
     {
-        YG2.saves.AddCoins(YG2.saves.GetAddItemCost() * 200);
+        YG2.saves.AddCoins((int)Random.Range(100, YG2.saves.GetLevel() * 100));
     }
 
     public void PlayClickSound()
@@ -33,9 +38,9 @@ public class GameManager : MonoBehaviour
         clickSound.Play();
     }
 
-    public void PlayAddCoinsSound()
+    public void PlayAddLevelSound()
     {
-        addCoinsSound.Play();
+        addLevelSound.Play();
     }
     
     public void PlayAddItemSound()

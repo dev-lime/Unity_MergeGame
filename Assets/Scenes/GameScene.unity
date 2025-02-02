@@ -249,7 +249,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 40000
+          m_IntArgument: 60000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1864,7 +1864,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2000
+          m_IntArgument: 4000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 464175758}
-  addCoinsSound: {fileID: 464175759}
+  addLevelSound: {fileID: 464175759}
   addItemSound: {fileID: 464175761}
   errorSound: {fileID: 464175760}
 --- !u!4 &464175757
@@ -3210,7 +3210,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 120000
+          m_IntArgument: 200000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3366,13 +3366,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bba7f2bf0ac7247808b80e4f066809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 5076615421019335775, guid: 37fdc55dd33a7fe4b80f7e85d97dc985, type: 3}
-  - {fileID: 5076615421019335775, guid: 7ba0373ab955f8c42959a45bfcce53a2, type: 3}
-  - {fileID: 5076615421019335775, guid: d411c3e938547fc47a5acb5390f9a94d, type: 3}
-  - {fileID: 5076615421019335775, guid: 9b16c91e19f22a04b947b8799df340cd, type: 3}
-  spawnY: 0
-  spawnIntervalRange: {x: 16, y: 32}
+  spawnableObjects:
+  - prefab: {fileID: 5076615421019335775, guid: 7ba0373ab955f8c42959a45bfcce53a2,
+      type: 3}
+    spawnChance: 40
+  - prefab: {fileID: 5076615421019335775, guid: 37fdc55dd33a7fe4b80f7e85d97dc985,
+      type: 3}
+    spawnChance: 30
+  - prefab: {fileID: 5076615421019335775, guid: d411c3e938547fc47a5acb5390f9a94d,
+      type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 5076615421019335775, guid: 9b16c91e19f22a04b947b8799df340cd,
+      type: 3}
+    spawnChance: 10
   fallSpeedRange: {x: 1, y: 5}
   rotationSpeedRange: {x: 20, y: 100}
 --- !u!4 &713001337
@@ -3447,7 +3453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 300000
+  m_text: 1000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4204,7 +4210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2000
+  m_text: 4000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4425,7 +4431,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 300000
+          m_IntArgument: 1000000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7041,7 +7047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 40000
+  m_text: 60000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8118,7 +8124,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120000
+  m_text: 200000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

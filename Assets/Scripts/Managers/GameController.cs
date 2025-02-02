@@ -46,11 +46,10 @@ public class GameController : MonoBehaviour
 
         /*if (YG2.saves.slots != null)
         {
-            slots = YG2.saves.GetSlots();
-        }
-        else
-        {
-            YG2.saves.SetSlots(slots);
+            for (int i = 0; i < YG2.saves.slots.Length; i++)
+            {
+                slots[i].LoadSlot(YG2.saves.slots[i].id, YG2.saves.slots[i].currentItem, YG2.saves.slots[i].state);
+            }
         }*/
     }
 
@@ -60,7 +59,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SendRayCast();
-            //YG2.saves.SetSlots(slots);
+            SaveSlots();
         }
 
         if (Input.GetMouseButton(0) && carryingItem)
@@ -84,6 +83,16 @@ public class GameController : MonoBehaviour
         }
 
         upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
+    }
+
+    void SaveSlots()
+    {
+        /*YG2.saves.slots = null;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            YG2.saves.SetSlots(i, slots[i].currentItem, slots[i].state);
+        }*/
     }
 
     void SendRayCast()
@@ -180,7 +189,7 @@ public class GameController : MonoBehaviour
     void SellItem()
     {
         YG2.saves.AddCoins(YG2.saves.GetItemSalePrice(carryingItem.itemId));
-        gameManager.PlayAddCoinsSound();
+        gameManager.PlayAddItemSound();
         Destroy(carryingItem.gameObject);
     }
 
@@ -227,11 +236,11 @@ public class GameController : MonoBehaviour
         slot.CreateItem(0);
     }
 
-    public void PlaceRandomItemToRandomSlot()
+    public bool PlaceRandomItemToRandomSlot()
     {
         if (AllSlotsOccupied())
         {
-            return;
+            return false;
         }
 
         var rand = Random.Range(0, slots.Length);
@@ -244,6 +253,8 @@ public class GameController : MonoBehaviour
         }
 
         slot.CreateItem(Random.Range(0, YG2.saves.GetLevel()));
+
+        return true;
     }
 
     public bool AllSlotsOccupied()
