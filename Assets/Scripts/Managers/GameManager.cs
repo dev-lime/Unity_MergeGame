@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource clickSound;
+    [SerializeField] private AudioSource addCoinsSound;
     [SerializeField] private AudioSource addLevelSound;
     [SerializeField] private AudioSource addItemSound;
     [SerializeField] private AudioSource errorSound;
+    [SerializeField] private AudioSource takeItemSound;
+    [SerializeField] private AudioSource dropItemSound;
 
     private void Awake()
     {
@@ -38,6 +41,11 @@ public class GameManager : MonoBehaviour
         clickSound.Play();
     }
 
+    public void PlayAddCoinsSound()
+    {
+        addCoinsSound.Play();
+    }
+
     public void PlayAddLevelSound()
     {
         addLevelSound.Play();
@@ -51,5 +59,15 @@ public class GameManager : MonoBehaviour
     public void PlayErrorSound()
     {
         errorSound.Play();
+    }
+    
+    public void PlayTakeItemSound()
+    {
+        takeItemSound.Play();
+    }
+
+    public void PlayDropItemSound()
+    {
+        dropItemSound.Play();
     }
 }

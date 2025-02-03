@@ -110,6 +110,8 @@ public class GameController : MonoBehaviour
                     // We are grabbing the item in a full slot
                     if (slot.state == SlotState.Full && carryingItem == null)
                     {
+                        gameManager.PlayTakeItemSound();
+
                         var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
                         itemGO.transform.position = slot.transform.position;
                         itemGO.transform.localScale = Vector3.one * scaleModifier;
@@ -122,12 +124,16 @@ public class GameController : MonoBehaviour
                     // We are dropping an item to empty slot
                     else if (slot.state == SlotState.Empty && carryingItem != null)
                     {
+                        gameManager.PlayDropItemSound();
+
                         slot.CreateItem(carryingItem.itemId);
                         Destroy(carryingItem.gameObject);
                     }
                     // We are dropping to full
                     else if (slot.state == SlotState.Full && carryingItem != null)
                     {
+                        gameManager.PlayDropItemSound();
+
                         // Check item in the slot
                         if (slot.currentItem.id == carryingItem.itemId && carryingItem.itemId < maxItemId)
                         {
@@ -189,7 +195,7 @@ public class GameController : MonoBehaviour
     void SellItem()
     {
         YG2.saves.AddCoins(YG2.saves.GetItemSalePrice(carryingItem.itemId));
-        gameManager.PlayAddItemSound();
+        gameManager.PlayAddCoinsSound();
         Destroy(carryingItem.gameObject);
     }
 

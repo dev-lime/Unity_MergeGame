@@ -16,7 +16,6 @@ public class AddItemButton : MonoBehaviour
         if (YG2.saves.GetCoins() >= YG2.saves.GetAddItemCost() && !gameController.AllSlotsOccupied())
         {
             gameController.AddRandomItem();
-            gameManager.PlayClickSound();
             gameManager.PlayAddItemSound();
         }
         else

@@ -18,7 +18,7 @@ public class BonusCoins : BonusObject
     private void OnMouseDown()
     {
         YG2.saves.AddCoins(AddMoneyCount);
-        gameManager.PlayClickSound();
+        gameManager.PlayAddCoinsSound();
 
         ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
