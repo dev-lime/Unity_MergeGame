@@ -20,7 +20,7 @@ public class Slot : MonoBehaviour
 
     private Renderer objectRenderer;
     private bool isFading = false;
-    private float fadeSpeed = 1f; // Скорость исчезновения
+    private float fadeSpeed = 3f; // Скорость исчезновения
 
     private void Start()
     {
@@ -52,6 +52,8 @@ public class Slot : MonoBehaviour
             if (alpha <= 0)
             {
                 unlockCostText.gameObject.SetActive(false);
+                isFading = false;
+                UnlockSlot();
             }
         }
     }
@@ -92,37 +94,24 @@ public class Slot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (state == SlotState.Lock)
-        {
-            if (UnlockSlot())
-            {
-                if (!isFading)
-                {
-                    isFading = true;
-                }
-
-                soundManager.PlayClickSound();
-            }
-            else
-            {
-                soundManager.PlayErrorSound();
-            }
-        }
-    }
-
-    private bool UnlockSlot()
-    {
         if (state == SlotState.Lock && YG2.saves.GetCoins() >= unlockSlotCost)
         {
-            ChangeStateTo(SlotState.Empty);
-            //unlockCostText.gameObject.SetActive(false);
-            YG2.saves.SubCoins(unlockSlotCost);
-            return true;
+            soundManager.PlayClickSound();
+            if (!isFading)
+            {
+                isFading = true;
+            }
         }
         else
         {
-            return false;
+            soundManager.PlayErrorSound();
         }
+    }
+
+    private void UnlockSlot()
+    {
+        ChangeStateTo(SlotState.Empty);
+        YG2.saves.SubCoins(unlockSlotCost);
     }
     
     public void OnMouseEnter()
