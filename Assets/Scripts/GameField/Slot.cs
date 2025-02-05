@@ -94,17 +94,17 @@ public class Slot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (state == SlotState.Lock && YG2.saves.GetCoins() >= unlockSlotCost)
+        if (state == SlotState.Lock)
         {
-            soundManager.PlayClickSound();
-            if (!isFading)
+            if (YG2.saves.GetCoins() >= unlockSlotCost && !isFading)
             {
+                soundManager.PlayClickSound();
                 isFading = true;
             }
-        }
-        else
-        {
-            soundManager.PlayErrorSound();
+            else
+            {
+                soundManager.PlayErrorSound();
+            }
         }
     }
 
