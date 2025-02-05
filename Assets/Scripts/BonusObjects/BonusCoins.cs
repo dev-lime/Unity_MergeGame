@@ -11,6 +11,7 @@ public class BonusCoins : BonusObject
     private void Start()
     {
         gameManager = GameManager.Instance;
+        soundManager = SoundManager.Instance;
 
         AddMoneyCount = (int)Random.Range(100, YG2.saves.GetLevel() * 100);
     }
@@ -18,7 +19,7 @@ public class BonusCoins : BonusObject
     private void OnMouseDown()
     {
         YG2.saves.AddCoins(AddMoneyCount);
-        gameManager.PlayAddCoinsSound();
+        soundManager.PlayAddCoinsSound();
 
         ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();

@@ -10,7 +10,7 @@ public class BonusItem : BonusObject
 
         if (gameController.PlaceRandomItemToRandomSlot())
         {
-            gameManager.PlayAddItemSound();
+            soundManager.PlayAddItemSound();
 
             ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,7 +35,7 @@ public class BonusItem : BonusObject
         }
         else
         {
-            gameManager.PlayErrorSound();
+            soundManager.PlayErrorSound();
         }
         
         Destroy(gameObject); // Уничтожаем объект

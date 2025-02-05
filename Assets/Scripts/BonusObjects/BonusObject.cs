@@ -3,6 +3,7 @@ using UnityEngine;
 public class BonusObject : MonoBehaviour
 {
     protected GameManager gameManager;
+    protected SoundManager soundManager;
 
     private float fallSpeed;
     private float rotationSpeed;
@@ -19,6 +20,7 @@ public class BonusObject : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        soundManager = SoundManager.Instance;
 
         // Определение нижней границы экрана
         /*Camera mainCamera = Camera.main;

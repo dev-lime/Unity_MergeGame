@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public TextMeshPro saleItemPriceText;
 
     private GameManager gameManager;
+    private SoundManager soundManager;
 
     private Vector3 _target;
     private ItemInfo carryingItem;
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        soundManager = SoundManager.Instance;
 
         addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
         upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
@@ -110,7 +112,7 @@ public class GameController : MonoBehaviour
                     // We are grabbing the item in a full slot
                     if (slot.state == SlotState.Full && carryingItem == null)
                     {
-                        gameManager.PlayTakeItemSound();
+                        soundManager.PlayTakeItemSound();
 
                         var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/ItemDummy"));
                         itemGO.transform.position = slot.transform.position;
@@ -124,7 +126,7 @@ public class GameController : MonoBehaviour
                     // We are dropping an item to empty slot
                     else if (slot.state == SlotState.Empty && carryingItem != null)
                     {
-                        gameManager.PlayDropItemSound();
+                        soundManager.PlayDropItemSound();
 
                         slot.CreateItem(carryingItem.itemId);
                         Destroy(carryingItem.gameObject);
@@ -132,7 +134,7 @@ public class GameController : MonoBehaviour
                     // We are dropping to full
                     else if (slot.state == SlotState.Full && carryingItem != null)
                     {
-                        gameManager.PlayDropItemSound();
+                        soundManager.PlayDropItemSound();
 
                         // Check item in the slot
                         if (slot.currentItem.id == carryingItem.itemId && carryingItem.itemId < maxItemId)
@@ -195,7 +197,7 @@ public class GameController : MonoBehaviour
     void SellItem()
     {
         YG2.saves.AddCoins(YG2.saves.GetItemSalePrice(carryingItem.itemId));
-        gameManager.PlayAddCoinsSound();
+        soundManager.PlayAddCoinsSound();
         Destroy(carryingItem.gameObject);
     }
 
@@ -275,6 +277,18 @@ public class GameController : MonoBehaviour
         }
         // No slot empty
         return true;
+    }
+
+    public bool GetCarringItem()
+    {
+        if (carryingItem == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     Slot GetSlotById(int id)

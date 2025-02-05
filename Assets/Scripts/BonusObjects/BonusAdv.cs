@@ -8,7 +8,7 @@ public class BonusAdv : BonusObject
     private void OnMouseDown()
     {
         YG2.RewardedAdvShow("coins", gameManager.GetReward);
-        gameManager.PlayClickSound();
+        soundManager.PlayClickSound();
 
         ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();

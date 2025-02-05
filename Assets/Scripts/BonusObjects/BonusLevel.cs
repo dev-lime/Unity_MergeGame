@@ -10,7 +10,7 @@ public class BonusLevel : BonusObject
         if (YG2.saves.GetLevel() < YG2.saves.GetMaxLevel())
         {
             YG2.saves.AddLevel();
-            gameManager.PlayAddLevelSound();
+            soundManager.PlayAddLevelSound();
 
             ParticleSystem spawnedParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,7 +35,7 @@ public class BonusLevel : BonusObject
         }
         else
         {
-            gameManager.PlayErrorSound();
+            soundManager.PlayErrorSound();
         }
         
         Destroy(gameObject); // Уничтожаем объект
