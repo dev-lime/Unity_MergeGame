@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     [Header("Slots")]
-    public int maxItemId = YG2.saves.GetMaxLevel();
     public int scaleModifier = 3;
     public Slot[] slots;
 
@@ -20,6 +19,7 @@ public class GameController : MonoBehaviour
     private GameManager gameManager;
     private SoundManager soundManager;
 
+    private readonly int maxItemId = YG2.saves.GetMaxLevel();
     private Vector3 _target;
     private ItemInfo carryingItem;
 
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].id = i;
+            slots[i].InitializeSlot();
             slotDictionary.Add(i, slots[i]);
         }
 

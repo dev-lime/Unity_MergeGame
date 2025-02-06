@@ -7,7 +7,105 @@
         false,
         false
     ],
-    "idSave": 295,
-    "coins": 0,
-    "level": 1
+    "idSave": 499,
+    "coins": 1500,
+    "level": 1,
+    "slots": [
+        {
+            "id": 0,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 0,
+            "unlockSlotCost": 0
+        },
+        {
+            "id": 1,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 0,
+            "unlockSlotCost": 0
+        },
+        {
+            "id": 2,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 1000
+        },
+        {
+            "id": 3,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 2000
+        },
+        {
+            "id": 4,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 4000
+        },
+        {
+            "id": 5,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 8000
+        },
+        {
+            "id": 6,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 16000
+        },
+        {
+            "id": 7,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 32000
+        },
+        {
+            "id": 8,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 64000
+        },
+        {
+            "id": 9,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 128000
+        },
+        {
+            "id": 10,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 256000
+        },
+        {
+            "id": 11,
+            "currentItem": {
+                "instanceID": 0
+            },
+            "state": 2,
+            "unlockSlotCost": 512000
+        }
+    ]
 }

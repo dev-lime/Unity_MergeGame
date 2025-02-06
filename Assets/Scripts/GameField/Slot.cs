@@ -18,9 +18,8 @@ public class Slot : MonoBehaviour
     private GameManager gameManager;
     private SoundManager soundManager;
 
-    private Renderer objectRenderer;
     private bool isFading = false;
-    private float fadeSpeed = 3f; // Скорость исчезновения
+    private readonly float fadeSpeed = 3f; // Скорость исчезновения
 
     private void Start()
     {
@@ -28,16 +27,16 @@ public class Slot : MonoBehaviour
         soundManager = SoundManager.Instance;
 
         SetAlpha(unlockCostText, 1f);
+    }
 
-        unlockCostText.text = unlockSlotCost.ToString();
-        if (state == SlotState.Lock)
-        {
-            unlockCostText.gameObject.SetActive(true);
-        }
-        else
-        {
-            unlockCostText.gameObject.SetActive(false);
-        }
+    private void OnEnable()
+    {
+        YG2.onDefaultSaves += InitializeSlot;
+    }
+
+    private void OnDisable()
+    {
+        YG2.onDefaultSaves -= InitializeSlot;
     }
 
     void Update()
@@ -53,18 +52,33 @@ public class Slot : MonoBehaviour
             {
                 unlockCostText.gameObject.SetActive(false);
                 isFading = false;
-                UnlockSlot();
+                SetAlpha(unlockCostText, 255);
             }
         }
     }
 
-    public void LoadSlot(int id, Item currentItem, SlotState state)
+    public void InitializeSlot()
     {
-        if (this.id == id)
+        SlotData YGSlots = YG2.saves.GetSlotDataById(id);
+
+        currentItem = YGSlots.currentItem;
+        state = YGSlots.state;
+        unlockSlotCost = YGSlots.unlockSlotCost;
+
+        unlockCostText.text = unlockSlotCost.ToString();
+        if (state == SlotState.Lock)
         {
-            this.currentItem = currentItem;
-            this.state = state;
+            unlockCostText.gameObject.SetActive(true);
         }
+        else
+        {
+            unlockCostText.gameObject.SetActive(false);
+        }
+    }
+
+    void SaveSlotData()
+    {
+        YG2.saves.SaveSlotData(new SlotData(id, currentItem, state, unlockSlotCost));
     }
 
     public void CreateItem(int id) 
@@ -84,6 +98,7 @@ public class Slot : MonoBehaviour
     private void ChangeStateTo(SlotState targetState)
     {
         state = targetState;
+        SaveSlotData();
     }
 
     public void ItemGrabbed()
@@ -100,6 +115,7 @@ public class Slot : MonoBehaviour
             {
                 soundManager.PlayClickSound();
                 isFading = true;
+                UnlockSlot();
             }
             else
             {
