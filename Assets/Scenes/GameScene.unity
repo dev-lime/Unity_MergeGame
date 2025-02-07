@@ -7364,7 +7364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08145fbdc07494f3da9fb5cbc4201ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItemId: 51
   scaleModifier: 3
   slots:
   - {fileID: 1134921808}
@@ -8061,51 +8060,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042490860}
   m_CullTransparentMesh: 1
---- !u!1 &2058255227
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2058255229}
-  - component: {fileID: 2058255228}
-  m_Layer: 0
-  m_Name: LeaderboardManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2058255228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058255227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7bf305d2a5f25449893ec50373dc521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderboard: {fileID: 1352721470}
---- !u!4 &2058255229
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058255227}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2122236946
 GameObject:
   m_ObjectHideFlags: 0
@@ -8595,7 +8549,6 @@ SceneRoots:
   - {fileID: 11902872}
   - {fileID: 1917364461}
   - {fileID: 713001337}
-  - {fileID: 2058255229}
   - {fileID: 519420032}
   - {fileID: 876041739}
   - {fileID: 586911228}

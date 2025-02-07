@@ -11,18 +11,18 @@ namespace YG
         public int coins = 1500;
         public int level = 1;
         public SlotData[] slots = {
-            new(0, null, SlotState.Empty, 0),
-            new(1, null, SlotState.Empty, 0),
-            new(2, null, SlotState.Lock, 1000),
-            new(3, null, SlotState.Lock, 2000),
-            new(4, null, SlotState.Lock, 4000),
-            new(5, null, SlotState.Lock, 8000),
-            new(6, null, SlotState.Lock, 16000),
-            new(7, null, SlotState.Lock, 32000),
-            new(8, null, SlotState.Lock, 64000),
-            new(9, null, SlotState.Lock, 128000),
-            new(10, null, SlotState.Lock, 256000),
-            new(11, null, SlotState.Lock, 512000)
+            new(0, -1, SlotState.Empty),
+            new(1, -1, SlotState.Empty),
+            new(2, -1, SlotState.Lock),
+            new(3, -1, SlotState.Lock),
+            new(4, -1, SlotState.Lock),
+            new(5, -1, SlotState.Lock),
+            new(6, -1, SlotState.Lock),
+            new(7, -1, SlotState.Lock),
+            new(8, -1, SlotState.Lock),
+            new(9, -1, SlotState.Lock),
+            new(10, -1, SlotState.Lock),
+            new(11, -1, SlotState.Lock)
         };
 
         private readonly int maxLevel = 51;
@@ -113,16 +113,14 @@ namespace YG
 public struct SlotData
 {
     public int id;
-    public Item currentItem;
+    public int currentItemId;
     public SlotState state;
-    public int unlockSlotCost;
 
-    public SlotData(int id, Item currentItem, SlotState state, int unlockSlotCost)
+    public SlotData(int id, int currentItemId, SlotState state)
     {
         this.id = id;
-        this.currentItem = currentItem;
+        this.currentItemId = currentItemId;
         this.state = state;
-        this.unlockSlotCost = unlockSlotCost;
     }
 }
 

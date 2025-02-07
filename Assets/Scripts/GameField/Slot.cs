@@ -61,9 +61,17 @@ public class Slot : MonoBehaviour
     {
         SlotData YGSlots = YG2.saves.GetSlotDataById(id);
 
-        currentItem = YGSlots.currentItem;
+        if (YGSlots.currentItemId == -1)
+        {
+            if (currentItem != null)
+                Destroy(currentItem.gameObject);
+        }
+        else
+        {
+            CreateItem(YGSlots.currentItemId);
+        }
+
         state = YGSlots.state;
-        unlockSlotCost = YGSlots.unlockSlotCost;
 
         unlockCostText.text = unlockSlotCost.ToString();
         if (state == SlotState.Lock)
@@ -78,7 +86,8 @@ public class Slot : MonoBehaviour
 
     void SaveSlotData()
     {
-        YG2.saves.SaveSlotData(new SlotData(id, currentItem, state, unlockSlotCost));
+        int currentItemId = currentItem!=null ? currentItem.id : -1;
+        YG2.saves.SaveSlotData(new SlotData(id, currentItemId, state));
     }
 
     public void CreateItem(int id) 
