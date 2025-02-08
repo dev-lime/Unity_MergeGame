@@ -85,7 +85,14 @@ public class GameController : MonoBehaviour
             saleItemPriceText.text = "";
         }
 
-        upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
+        if (YG2.saves.GetLevel() < maxItemId)
+        {
+            upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
+        }
+        else
+        {
+            upgradeCostText.text = "";
+        }
     }
 
     void SaveSlots()
