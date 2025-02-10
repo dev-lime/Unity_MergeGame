@@ -62,7 +62,6 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SendRayCast();
-            SaveSlots();
         }
 
         if (Input.GetMouseButton(0) && carryingItem)
@@ -93,16 +92,6 @@ public class GameController : MonoBehaviour
         {
             upgradeCostText.text = "";
         }
-    }
-
-    void SaveSlots()
-    {
-        /*YG2.saves.slots = null;
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            YG2.saves.SetSlots(i, slots[i].currentItem, slots[i].state);
-        }*/
     }
 
     void SendRayCast()
@@ -219,6 +208,11 @@ public class GameController : MonoBehaviour
             YG2.saves.AddLevel();
             //upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
         }
+    }
+
+    public void ShowInterstitialAdv()
+    {
+        YG2.InterstitialAdvShow();
     }
 
     public void AddRandomItem()

@@ -1,0 +1,75 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 698,
+    "coins": 1500,
+    "level": 1,
+    "slots": [
+        {
+            "id": 0,
+            "currentItemId": -1,
+            "state": 0
+        },
+        {
+            "id": 1,
+            "currentItemId": -1,
+            "state": 0
+        },
+        {
+            "id": 2,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 3,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 4,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 5,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 6,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 7,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 8,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 9,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 10,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 11,
+            "currentItemId": -1,
+            "state": 2
+        }
+    ]
+}

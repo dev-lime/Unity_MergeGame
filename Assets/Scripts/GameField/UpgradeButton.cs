@@ -16,6 +16,8 @@ public class UpgradeButton : MonoBehaviour
 
     private void OnMouseDown()
     {
+        YG2.InterstitialAdvShow();
+
         if (YG2.saves.GetCoins() >= YG2.saves.GetAddLevelCost() && YG2.saves.GetLevel() < YG2.saves.GetMaxLevel())
         {
             gameController.Upgrade();

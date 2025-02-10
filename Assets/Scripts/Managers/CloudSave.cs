@@ -70,6 +70,11 @@ namespace YG
             return 100;
         }
 
+        public int GetAdvReward()
+        {
+            return (int)UnityEngine.Random.Range(500, YG2.saves.GetLevel() * 500);
+        }
+
         public int GetItemSalePrice(int itemId)
         {
             return (int)(math.pow(itemId + 1, 2) * math.sqrt(GetLevel()) * 50);
