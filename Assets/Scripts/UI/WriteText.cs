@@ -12,7 +12,7 @@ public class WriteText : MonoBehaviour
     [Header("Animation")]
     public float duration = 1.0f; // Время анимации в секундах
 
-    private int localCoins = YG2.saves.GetCoins();
+    private long localCoins = YG2.saves.GetCoins();
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class WriteText : MonoBehaviour
         }
     }
 
-    IEnumerator AnimateCounter(TextMeshProUGUI textElement, int start, int end, float time)
+    IEnumerator AnimateCounter(TextMeshProUGUI textElement, long start, long end, float time)
     {
         float elapsedTime = 0;
         while (elapsedTime < time)

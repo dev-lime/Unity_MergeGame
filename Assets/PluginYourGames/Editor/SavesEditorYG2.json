@@ -7,9 +7,9 @@
         false,
         false
     ],
-    "idSave": 698,
-    "coins": 1500,
-    "level": 1,
+    "idSave": 812,
+    "coins": 400,
+    "level": 2,
     "slots": [
         {
             "id": 0,
@@ -18,18 +18,18 @@
         },
         {
             "id": 1,
-            "currentItemId": -1,
-            "state": 0
+            "currentItemId": 2,
+            "state": 1
         },
         {
             "id": 2,
-            "currentItemId": -1,
-            "state": 2
+            "currentItemId": 3,
+            "state": 1
         },
         {
             "id": 3,
             "currentItemId": -1,
-            "state": 2
+            "state": 0
         },
         {
             "id": 4,

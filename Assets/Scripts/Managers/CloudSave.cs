@@ -1,8 +1,6 @@
-using NUnit.Framework.Interfaces;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEngine.SceneManagement;
 
 namespace YG
 {
@@ -25,20 +23,24 @@ namespace YG
             new(11, -1, SlotState.Lock)
         };
 
-        private readonly int maxLevel = 51;
+        private readonly int maxLevel = 130;
+        private List<int> prices = new List<int>
+        {
+            50, 105, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000
+        };
 
         public void AddCoins(int addMoney)
         {
             coins += addMoney;
             YG2.SaveProgress();
-            UpdateRecord(YG2.saves.GetCoins());
+            UpdateRecord((int)YG2.saves.GetCoins());
         }
 
         public void SubCoins(int subMoney)
         {
             coins -= subMoney;
             YG2.SaveProgress();
-            UpdateRecord(YG2.saves.GetCoins());
+            UpdateRecord((int)YG2.saves.GetCoins());
         }
 
         public int GetCoins()
@@ -77,7 +79,7 @@ namespace YG
 
         public int GetItemSalePrice(int itemId)
         {
-            return (int)(math.pow(itemId + 1, 2) * math.sqrt(GetLevel()) * 50);
+            return prices[itemId];
         }
 
         public SlotData GetSlotDataById(int id)
