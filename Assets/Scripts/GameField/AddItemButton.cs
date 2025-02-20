@@ -3,8 +3,6 @@ using YG;
 
 public class AddItemButton : MonoBehaviour
 {
-    public GameObject shadow;
-
     private GameController gameController;
     private SoundManager soundManager;
 
@@ -14,7 +12,7 @@ public class AddItemButton : MonoBehaviour
         soundManager = SoundManager.Instance;
     }
 
-    private void OnMouseDown()
+    public void AddItem()
     {
         if (YG2.saves.GetCoins() >= YG2.saves.GetAddItemCost() && !gameController.AllSlotsOccupied())
         {
@@ -25,15 +23,5 @@ public class AddItemButton : MonoBehaviour
         {
             soundManager.PlayErrorSound();
         }
-    }
-
-    public void OnMouseEnter()
-    {
-        shadow.SetActive(true);
-    }
-
-    public void OnMouseExit()
-    {
-        shadow.SetActive(false);
     }
 }

@@ -3,8 +3,6 @@ using YG;
 
 public class UpgradeButton : MonoBehaviour
 {
-    public GameObject shadow;
-
     private GameController gameController;
     private SoundManager soundManager;
 
@@ -14,7 +12,7 @@ public class UpgradeButton : MonoBehaviour
         soundManager = SoundManager.Instance;
     }
 
-    private void OnMouseDown()
+    public void AddLevel()
     {
         YG2.InterstitialAdvShow();
 
@@ -27,15 +25,5 @@ public class UpgradeButton : MonoBehaviour
         {
             soundManager.PlayErrorSound();
         }
-    }
-
-    public void OnMouseEnter()
-    {
-        shadow.SetActive(true);
-    }
-
-    public void OnMouseExit()
-    {
-        shadow.SetActive(false);
     }
 }

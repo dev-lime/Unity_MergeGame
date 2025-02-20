@@ -16,6 +16,7 @@ public class Slot : MonoBehaviour
     [SerializeField] private int unlockSlotCost = 5000;
 
     private GameManager gameManager;
+    private GameController gameController;
     private SoundManager soundManager;
 
     private bool isFading = false;
@@ -24,6 +25,7 @@ public class Slot : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        gameController = FindFirstObjectByType<GameController>();
         soundManager = SoundManager.Instance;
 
         SetAlpha(unlockCostText, 1f);
@@ -136,12 +138,14 @@ public class Slot : MonoBehaviour
     
     public void OnMouseEnter()
     {
-        shadow.SetActive(true);
+        if (!gameController.GetCarringItem())
+            shadow.SetActive(true);
     }
 
     public void OnMouseExit()
     {
-        shadow.SetActive(false);
+        if (shadow.activeSelf)
+            shadow.SetActive(false);
     }
 
     // Метод для установки прозрачности (альфа-канала) на объект и все его дочерние элементы

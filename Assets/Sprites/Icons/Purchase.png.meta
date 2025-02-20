@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 09bb57f61cab54844be6c1cbd9ab4128
+guid: 45ba4d5056a56864aabfd1691906c863
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4758755481869069923
-    second: CardShirt_0
+      213: 653883145351026957
+    second: Purchase_0
+  - first:
+      213: -654784094133869829
+    second: Purchase_1
+  - first:
+      213: 5099403202284887847
+    second: Purchase_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CardShirt_0
+      name: Purchase_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 128
-        height: 192
+        y: 57
+        width: 256
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36eafb5d5ee7a0240800000000000000
-      internalID: 4758755481869069923
+      spriteID: d09534b914f031900800000000000000
+      internalID: 653883145351026957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purchase_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 8
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf22398e55db9e6f0800000000000000
+      internalID: -654784094133869829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purchase_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 8
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f1ea6d138b4c640800000000000000
+      internalID: 5099403202284887847
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CardShirt_0: 4758755481869069923
+      Purchase_0: 653883145351026957
+      Purchase_1: -654784094133869829
+      Purchase_2: 5099403202284887847
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

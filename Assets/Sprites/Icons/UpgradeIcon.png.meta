@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 09bb57f61cab54844be6c1cbd9ab4128
+guid: d458f717a442b704fb320e5c24811182
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4758755481869069923
-    second: CardShirt_0
+      213: 6610348951678344521
+    second: PlusIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CardShirt_0
+      name: PlusIcon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 192
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36eafb5d5ee7a0240800000000000000
-      internalID: 4758755481869069923
+      spriteID: 94dd922395dacbb50800000000000000
+      internalID: 6610348951678344521
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CardShirt_0: 4758755481869069923
+      PlusIcon_0: 6610348951678344521
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

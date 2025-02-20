@@ -26,7 +26,7 @@ namespace YG
         private readonly int maxLevel = 13;
         private readonly List<int> prices = new()
         {
-            50, 105, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000
+            100, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000, 1400000
         };
 
         public void AddCoins(int addMoney)
