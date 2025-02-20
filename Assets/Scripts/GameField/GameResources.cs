@@ -1,8 +1,14 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu]
-public class GameResources : ScriptableObject 
+[CreateAssetMenu(fileName = "GameResources", menuName = "Game/GameResources")]
+public class GameResources : ScriptableObject
 {
-    public List<Sprite> items = new List<Sprite>();
+    public List<List<Sprite>> items = new();
+    public int subListSize = 4;
+
+    private void OnEnable()
+    {
+        Debug.Log($"GameResources enabled. Items count: {items.Count}");
+    }
 }

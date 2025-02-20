@@ -25,7 +25,8 @@ public class GameController : MonoBehaviour
 
     private Dictionary<int, Slot> slotDictionary;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
         Utils.InitResources();
     }

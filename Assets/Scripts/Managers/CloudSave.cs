@@ -23,7 +23,7 @@ namespace YG
             new(11, -1, SlotState.Lock)
         };
 
-        private readonly int maxLevel = 130;
+        private readonly int maxLevel = 51;
         private List<int> prices = new List<int>
         {
             50, 105, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000
