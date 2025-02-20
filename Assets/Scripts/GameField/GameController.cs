@@ -46,14 +46,6 @@ public class GameController : MonoBehaviour
             slots[i].InitializeSlot();
             slotDictionary.Add(i, slots[i]);
         }
-
-        /*if (YG2.saves.slots != null)
-        {
-            for (int i = 0; i < YG2.saves.slots.Length; i++)
-            {
-                slots[i].LoadSlot(YG2.saves.slots[i].id, YG2.saves.slots[i].currentItem, YG2.saves.slots[i].state);
-            }
-        }*/
     }
 
     // Handle user input
@@ -206,7 +198,6 @@ public class GameController : MonoBehaviour
         {
             YG2.saves.SubCoins(addLevelCost);
             YG2.saves.AddLevel();
-            //upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
         }
     }
 
@@ -217,7 +208,7 @@ public class GameController : MonoBehaviour
 
     public void AddRandomItem()
     {
-        PlaceItemToRandomSlot();
+        PlaceItemToRandomSlot(0);
         addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
         YG2.saves.SubCoins(YG2.saves.GetAddItemCost());
     }
@@ -227,7 +218,7 @@ public class GameController : MonoBehaviour
         YG2.saves.ResetSaves();
     }
 
-    void PlaceItemToRandomSlot()
+    void PlaceItemToRandomSlot(int id)
     {
         if (AllSlotsOccupied())
         {
@@ -243,7 +234,7 @@ public class GameController : MonoBehaviour
             slot = GetSlotById(rand);
         }
 
-        slot.CreateItem(0);
+        slot.CreateItem(id);
     }
 
     public bool PlaceRandomItemToRandomSlot()
