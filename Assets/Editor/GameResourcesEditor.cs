@@ -33,14 +33,14 @@ public class GameResourcesEditor : Editor
                 EditorGUI.indentLevel++; // Увеличиваем отступ для вложенных элементов
 
                 // Убедимся, что размер вложенного списка соответствует subListSize
-                ResizeSubList(gameResources.items[i], gameResources.subListSize);
+                ResizeSubList(gameResources.items[i].itemSprites, gameResources.subListSize);
 
                 // Отображаем поля для каждого элемента вложенного списка
-                for (int j = 0; j < gameResources.items[i].Count; j++)
+                for (int j = 0; j < gameResources.items[i].itemSprites.Count; j++)
                 {
-                    gameResources.items[i][j] = (Sprite)EditorGUILayout.ObjectField(
+                    gameResources.items[i].itemSprites[j] = (Sprite)EditorGUILayout.ObjectField(
                         $"Element {j}",
-                        gameResources.items[i][j],
+                        gameResources.items[i].itemSprites[j],
                         typeof(Sprite),
                         false
                     );
@@ -79,12 +79,13 @@ public class GameResourcesEditor : Editor
     // Метод для добавления нового списка
     private void AddNewList(GameResources gameResources)
     {
-        List<Sprite> newList = new List<Sprite>();
+        ItemGroup newItemGroup = new ItemGroup();
+        newItemGroup.itemSprites = new List<Sprite>();
         for (int i = 0; i < subListSize; i++)
         {
-            newList.Add(null); // Инициализируем каждый элемент значением null
+            newItemGroup.itemSprites.Add(null); // Инициализируем каждый элемент значением null
         }
-        gameResources.items.Add(newList);
+        gameResources.items.Add(newItemGroup);
         SaveGameResources(gameResources); // Сохраняем изменения
     }
 
@@ -105,6 +106,5 @@ public class GameResourcesEditor : Editor
     {
         EditorUtility.SetDirty(gameResources);
         AssetDatabase.SaveAssets();
-        Debug.Log("GameResources saved!");
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Utils
@@ -13,20 +12,13 @@ public static class Utils
         if (gameResources == null)
         {
             Debug.LogError("GameResources not found in Resources folder!");
-            return;
         }
-
-        Debug.Log($"GameResources loaded. Items count: {gameResources.items.Count}");
-
-        for (int i = 0; i < gameResources.items.Count; i++)
+        else
         {
-            if (gameResources.items[i] == null)
+            Debug.Log($"GameResources loaded. Items count: {gameResources.items.Count}");
+            for (int i = 0; i < gameResources.items.Count; i++)
             {
-                Debug.LogError($"items[{i}] is NULL!");
-            }
-            else
-            {
-                Debug.Log($"List {i} count: {gameResources.items[i].Count}");
+                Debug.Log($"List {i} count: {gameResources.items[i].itemSprites.Count}");
             }
         }
     }
@@ -53,18 +45,18 @@ public static class Utils
             return null;
         }
 
-        // ѕолучаем вложенный список
-        List<Sprite> subList = gameResources.items[itemId];
+        // ѕолучаем вложенный список из ItemGroup
+        ItemGroup itemGroup = gameResources.items[itemId];
 
         // ѕроверка, что вложенный список не пустой
-        if (subList == null || subList.Count == 0)
+        if (itemGroup == null || itemGroup.itemSprites.Count == 0)
         {
-            Debug.LogError($"Sub list for item ID {itemId} is empty or null.");
+            Debug.LogError($"Item group for item ID {itemId} is empty or null.");
             return null;
         }
 
         // ¬ыбираем случайный спрайт из вложенного списка
-        int randomIndex = Random.Range(0, subList.Count);
-        return subList[randomIndex];
+        int randomIndex = Random.Range(0, itemGroup.itemSprites.Count);
+        return itemGroup.itemSprites[randomIndex];
     }
 }
