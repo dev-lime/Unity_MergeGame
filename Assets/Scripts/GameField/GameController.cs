@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     public Slot[] slots;
 
     [Header("Prices")]
-    //public TextMeshPro addItemCostText;
-    //public TextMeshPro upgradeCostText;
+    public TextMeshProUGUI addItemCostText;
+    public TextMeshProUGUI upgradeCostText;
     public TextMeshPro saleItemPriceText;
 
     private GameManager gameManager;
@@ -36,8 +36,8 @@ public class GameController : MonoBehaviour
         gameManager = GameManager.Instance;
         soundManager = SoundManager.Instance;
 
-        //addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
-        //upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
+        addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
+        upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
 
         slotDictionary = new Dictionary<int, Slot>();
         
@@ -77,14 +77,14 @@ public class GameController : MonoBehaviour
             saleItemPriceText.text = "";
         }
 
-        /*if (YG2.saves.GetLevel() < maxItemId)
+        if (YG2.saves.GetLevel() < maxItemId)
         {
             upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
         }
         else
         {
             upgradeCostText.text = "";
-        }*/
+        }
     }
 
     void SendRayCast()
@@ -210,13 +210,18 @@ public class GameController : MonoBehaviour
     public void AddRandomItem()
     {
         PlaceItemToRandomSlot(0);
-        //addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
+        addItemCostText.text = YG2.saves.GetAddItemCost().ToString();
         YG2.saves.SubCoins(YG2.saves.GetAddItemCost());
     }
 
     public void ResetSaves()
     {
         YG2.saves.ResetSaves();
+    }
+
+    public void BuyCoins(int coins)
+    {
+        YG2.saves.AddCoins(coins);
     }
 
     void PlaceItemToRandomSlot(int id)

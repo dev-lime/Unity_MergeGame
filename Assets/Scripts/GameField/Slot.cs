@@ -138,7 +138,7 @@ public class Slot : MonoBehaviour
     
     public void OnMouseEnter()
     {
-        if (!gameController.GetCarringItem())
+        if (!gameController.GetCarringItem() || state == SlotState.Empty)
             shadow.SetActive(true);
     }
 
