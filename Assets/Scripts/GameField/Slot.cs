@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour
     public int id;
     public Item currentItem;
     public SlotState state = SlotState.Empty;
+    public float scalemodifier = 3f;
 
     [Header("Lock Slot")]
     [SerializeField] private TextMeshPro unlockCostText;
@@ -93,7 +94,7 @@ public class Slot : MonoBehaviour
         
         itemGO.transform.SetParent(this.transform);
         itemGO.transform.localPosition = Vector3.zero;
-        itemGO.transform.localScale = Vector3.one;
+        itemGO.transform.localScale = Vector3.one * scalemodifier;
 
         currentItem = itemGO.GetComponent<Item>();
         currentItem.Init(id, this);

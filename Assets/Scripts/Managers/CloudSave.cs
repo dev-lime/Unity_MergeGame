@@ -23,7 +23,7 @@ namespace YG
             new(11, -1, SlotState.Lock)
         };
 
-        private readonly int maxLevel = 13;
+        private readonly int maxLevel = 12;
         private readonly List<int> prices = new()
         {
             100, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000, 1400000
@@ -33,14 +33,14 @@ namespace YG
         {
             coins += addMoney;
             YG2.SaveProgress();
-            UpdateRecord((int)YG2.saves.GetCoins());
+            UpdateRecord(YG2.saves.GetCoins());
         }
 
         public void SubCoins(int subMoney)
         {
             coins -= subMoney;
             YG2.SaveProgress();
-            UpdateRecord((int)YG2.saves.GetCoins());
+            UpdateRecord(YG2.saves.GetCoins());
         }
 
         public int GetCoins()

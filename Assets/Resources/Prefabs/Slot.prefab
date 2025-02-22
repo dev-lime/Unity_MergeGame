@@ -508,5 +508,6 @@ MonoBehaviour:
   id: 0
   currentItem: {fileID: 0}
   state: 0
+  scalemodifier: 4
   unlockCostText: {fileID: 5422063109311228624}
   unlockSlotCost: 5000

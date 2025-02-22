@@ -10,7 +10,7 @@ public class DrawerController : MonoBehaviour, IPointerDownHandler, IDragHandler
     public float slideSpeed = 1280f; // Базовая скорость движения
     public float overshootLimit = 50f; // Максимальное перерастяжение
     public float smoothTime = 0.2f; // Время сглаживания для SmoothDamp
-    public float closeThresholdSpeed = 1000f; // Порог скорости для мгновенного закрытия
+    public float velocityThreshold = 1000f; // Порог скорости для мгновенного закрытия/открытия
 
     private float closedYPosition;
     private float openYPosition;
@@ -85,9 +85,14 @@ public class DrawerController : MonoBehaviour, IPointerDownHandler, IDragHandler
             isDragging = false;
 
             // Если резкое движение вниз — моментально закрываем шторку
-            if (lastDragDelta < -closeThresholdSpeed)
+            if (lastDragDelta < -velocityThreshold)
             {
                 targetY = closedYPosition;
+            }
+            // Если резкое движение вверх — моментально открываем шторку
+            else if (lastDragDelta > velocityThreshold)
+            {
+                targetY = openYPosition;
             }
             else
             {
@@ -105,6 +110,7 @@ public class DrawerController : MonoBehaviour, IPointerDownHandler, IDragHandler
     void ToggleDrawer()
     {
         float currentY = drawerPanel.anchoredPosition.y;
+
         // Определяем, куда двигать шторку
         if (Mathf.Abs(currentY - openYPosition) < Mathf.Abs(currentY - closedYPosition))
         {

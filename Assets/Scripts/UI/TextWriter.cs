@@ -3,7 +3,7 @@ using UnityEngine;
 using YG;
 using System.Collections;
 
-public class WriteText : MonoBehaviour
+public class TextWriter : MonoBehaviour
 {
     [Header("Texts")]
     public TextMeshProUGUI levelText;
