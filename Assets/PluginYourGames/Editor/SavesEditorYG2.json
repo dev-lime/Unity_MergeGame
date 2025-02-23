@@ -7,14 +7,14 @@
         false,
         false
     ],
-    "idSave": 1775,
-    "coins": 2198,
-    "level": 5,
+    "idSave": 1815,
+    "coins": 1500,
+    "level": 1,
     "slots": [
         {
             "id": 0,
-            "currentItemId": 1,
-            "state": 1
+            "currentItemId": -1,
+            "state": 0
         },
         {
             "id": 1,
@@ -23,23 +23,23 @@
         },
         {
             "id": 2,
-            "currentItemId": 0,
-            "state": 1
+            "currentItemId": -1,
+            "state": 2
         },
         {
             "id": 3,
-            "currentItemId": 1,
-            "state": 1
+            "currentItemId": -1,
+            "state": 2
         },
         {
             "id": 4,
             "currentItemId": -1,
-            "state": 0
+            "state": 2
         },
         {
             "id": 5,
-            "currentItemId": 1,
-            "state": 1
+            "currentItemId": -1,
+            "state": 2
         },
         {
             "id": 6,

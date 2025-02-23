@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
     public int[] pricesArray1; // Цены для предметов первого массива
     public int[] pricesArray2; // Цены для предметов второго массива
 
+    public BackgroundManager backgroundManager; // Ссылка на BackgroundManager
+
     private int selectedIndexArray1 = 0; // Индекс выбранного предмета в первом массиве
     private int selectedIndexArray2 = 0; // Индекс выбранного предмета во втором массиве
 
@@ -39,6 +41,12 @@ public class ShopManager : MonoBehaviour
             // Обновляем выбор в первом массиве
             int clickedIndex = GetItemIndex(shopItemsArray1, clickedItem);
             HandleItemSelection(shopItemsArray1, pricesArray1, clickedIndex, ref selectedIndexArray1);
+
+            // Вызываем метод UpdateBackground() при изменении выбора в первом массиве
+            if (backgroundManager != null)
+            {
+                backgroundManager.SetBackgroundById(clickedIndex);
+            }
         }
         else if (arrayIndex == 1)
         {
@@ -97,13 +105,13 @@ public class ShopManager : MonoBehaviour
             if (costText != null)
             {
                 // Устанавливаем цену предмета
-                if (prices[i] <= 0)
+                if (prices[i] > 0)
                 {
-                    costText.text = "";
+                    costText.text = prices[i].ToString(); // Показываем цену, если она больше 0
                 }
                 else
                 {
-                    costText.text = prices[i].ToString();
+                    costText.text = ""; // Скрываем цену, если она равна 0
                 }
 
                 // Проверяем, заблокирован ли предмет
@@ -153,23 +161,17 @@ public class ShopManager : MonoBehaviour
         return -1;
     }
 
-    // Метод для получения информации о выбранном предмете
-    public string GetSelectedItemInfo(int arrayIndex)
+    // Метод для получения индекса выбранного предмета
+    public int GetSelectedItemIndex(int arrayIndex)
     {
         if (arrayIndex == 0)
         {
-            if (selectedIndexArray1 >= 0 && selectedIndexArray1 < shopItemsArray1.Length)
-            {
-                return $"Selected item in array 1: {shopItemsArray1[selectedIndexArray1].name}, Price: {pricesArray1[selectedIndexArray1]}";
-            }
+            return selectedIndexArray1;
         }
         else if (arrayIndex == 1)
         {
-            if (selectedIndexArray2 >= 0 && selectedIndexArray2 < shopItemsArray2.Length)
-            {
-                return $"Selected item in array 2: {shopItemsArray2[selectedIndexArray2].name}, Price: {pricesArray2[selectedIndexArray2]}";
-            }
+            return selectedIndexArray2;
         }
-        return "No item selected in the specified array.";
+        return -1; // Если передан неверный индекс массива
     }
 }
