@@ -41,12 +41,6 @@ public class ShopManager : MonoBehaviour
             // Обновляем выбор в первом массиве
             int clickedIndex = GetItemIndex(shopItemsArray1, clickedItem);
             HandleItemSelection(shopItemsArray1, pricesArray1, clickedIndex, ref selectedIndexArray1);
-
-            // Вызываем метод UpdateBackground() при изменении выбора в первом массиве
-            if (backgroundManager != null)
-            {
-                backgroundManager.SetBackgroundById(clickedIndex);
-            }
         }
         else if (arrayIndex == 1)
         {
@@ -67,15 +61,24 @@ public class ShopManager : MonoBehaviour
         {
             // Вычитаем монеты
             YG2.saves.SubCoins(itemPrice);
-            Debug.Log($"Item purchased! Coins left: {YG2.saves.GetCoins()}");
+            //Debug.Log($"Item purchased! Coins left: {YG2.saves.GetCoins()}");
 
             // Разблокируем предмет
             prices[clickedIndex] = 0; // Устанавливаем цену в 0 (предмет разблокирован)
         }
 
-        // Обновляем выбор
-        selectedIndex = clickedIndex;
-        UpdateItemStates(itemsArray, prices, ref selectedIndex);
+        if (prices[clickedIndex] == 0)
+        {
+            // Вызываем метод UpdateBackground() при изменении выбора в первом массиве
+            if (backgroundManager != null)
+            {
+                backgroundManager.SetBackgroundById(clickedIndex);
+            }
+
+            // Обновляем выбор
+            selectedIndex = clickedIndex;
+            UpdateItemStates(itemsArray, prices, ref selectedIndex);
+        }
     }
 
     // Метод для обновления состояний предметов в массиве
