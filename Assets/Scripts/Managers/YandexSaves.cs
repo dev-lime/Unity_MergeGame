@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace YG
 {
@@ -17,17 +20,19 @@ namespace YG
             new(5, -1, SlotState.Lock),
             new(6, -1, SlotState.Lock),
             new(7, -1, SlotState.Lock),
-            new(8, -1, SlotState.Lock),
-            new(9, -1, SlotState.Lock),
-            new(10, -1, SlotState.Lock),
-            new(11, -1, SlotState.Lock)
+            new(8, -1, SlotState.Lock)
         };
+        public List<Goods> backgrounds = new();
+        public List<Goods> items = new();
+        public int selectedBackgroundIndex = 0; // Индекс выбранного фона
 
         private readonly int maxLevel = 12;
         private readonly List<int> prices = new()
         {
             100, 220, 450, 900, 2000, 5000, 12000, 25000, 60000, 140000, 320000, 680000, 1400000
         };
+
+        public event Action OnResetSaves;
 
         public void AddCoins(int addMoney)
         {
@@ -105,7 +110,23 @@ namespace YG
 
         public void ResetSaves()
         {
-            YG2.SetDefaultSaves();
+            coins = 1500;
+            level = 1;
+            slots = new SlotData[] {
+                new(0, -1, SlotState.Empty),
+                new(1, -1, SlotState.Empty),
+                new(2, -1, SlotState.Lock),
+                new(3, -1, SlotState.Lock),
+                new(4, -1, SlotState.Lock),
+                new(5, -1, SlotState.Lock),
+                new(6, -1, SlotState.Lock),
+                new(7, -1, SlotState.Lock),
+                new(8, -1, SlotState.Lock)
+            };
+
+            OnResetSaves?.Invoke();
+
+            //YG2.SetDefaultSaves();
             YG2.SaveProgress();
         }
 
@@ -129,6 +150,16 @@ public struct SlotData
         this.currentItemId = currentItemId;
         this.state = state;
     }
+}
+
+[Serializable]
+public class Goods
+{
+    public Sprite sprite;
+    public int price;
+
+    [HideInInspector] public Image uiImage;
+    [HideInInspector] public TextMeshProUGUI uiText;
 }
 
 public enum SlotState

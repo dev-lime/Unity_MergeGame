@@ -56,7 +56,7 @@ public static class Utils
         }
 
         // ¬ыбираем случайный спрайт из вложенного списка
-        int randomIndex = Random.Range(0, itemGroup.itemSprites.Count);
-        return itemGroup.itemSprites[randomIndex];
+        //int randomIndex = Random.Range(0, itemGroup.itemSprites.Count);
+        return itemGroup.itemSprites[0];
     }
 }

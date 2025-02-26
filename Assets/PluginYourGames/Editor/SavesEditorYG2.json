@@ -7,19 +7,19 @@
         false,
         false
     ],
-    "idSave": 1937,
-    "coins": 877300,
+    "idSave": 35,
+    "coins": 100,
     "level": 1,
     "slots": [
         {
             "id": 0,
-            "currentItemId": 0,
+            "currentItemId": 1,
             "state": 1
         },
         {
             "id": 1,
-            "currentItemId": -1,
-            "state": 0
+            "currentItemId": 0,
+            "state": 1
         },
         {
             "id": 2,
@@ -49,27 +49,88 @@
         {
             "id": 7,
             "currentItemId": -1,
-            "state": 0
+            "state": 2
         },
         {
             "id": 8,
             "currentItemId": -1,
             "state": 2
-        },
-        {
-            "id": 9,
-            "currentItemId": -1,
-            "state": 2
-        },
-        {
-            "id": 10,
-            "currentItemId": -1,
-            "state": 2
-        },
-        {
-            "id": 11,
-            "currentItemId": -1,
-            "state": 2
         }
-    ]
+    ],
+    "backgrounds": [
+        {
+            "sprite": {
+                "instanceID": 46120
+            },
+            "price": 0,
+            "uiImage": {
+                "instanceID": -30814
+            },
+            "uiText": {
+                "instanceID": -30806
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46122
+            },
+            "price": 0,
+            "uiImage": {
+                "instanceID": -30850
+            },
+            "uiText": {
+                "instanceID": -30842
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46124
+            },
+            "price": 4800,
+            "uiImage": {
+                "instanceID": -30886
+            },
+            "uiText": {
+                "instanceID": -30878
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46126
+            },
+            "price": 12900,
+            "uiImage": {
+                "instanceID": -30922
+            },
+            "uiText": {
+                "instanceID": -30914
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46128
+            },
+            "price": 39400,
+            "uiImage": {
+                "instanceID": -30958
+            },
+            "uiText": {
+                "instanceID": -30950
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46130
+            },
+            "price": 72000,
+            "uiImage": {
+                "instanceID": -30994
+            },
+            "uiText": {
+                "instanceID": -30986
+            }
+        }
+    ],
+    "items": [],
+    "selectedBackgroundIndex": 0
 }

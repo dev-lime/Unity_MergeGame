@@ -8,8 +8,8 @@ using System.Collections.Generic;
 public class ShopManager : MonoBehaviour
 {
     [Header("Goods")]
-    public List<Goods> backgrounds = new();
-    public List<Goods> items = new();
+    public List<Goods> defaultBackgrounds = new(); // Данные из инспектора (для первого запуска)
+    public List<Goods> defaultItems = new(); // Данные из инспектора (для первого запуска)
 
     [Header("State Sprites")]
     public Sprite closedSprite;
@@ -31,9 +31,59 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
-        SetBackgroundById(selectedIndexBackgrounds); // Устанавливаем начальный фон
-        CreateGoods(backgrounds, backgroundsContainer, true);
-        CreateGoods(items, itemsContainer, false);
+        // Подписываемся на событие загрузки данных
+        YG2.onGetSDKData += OnGetData;
+
+        // Если данные уже загружены, инициализируем магазин
+        if (YG2.saves != null)
+        {
+            InitializeData();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Отписываемся от события при уничтожении объекта
+        YG2.onGetSDKData -= OnGetData;
+    }
+
+    private void OnGetData()
+    {
+        // Инициализируем данные после загрузки
+        InitializeData();
+    }
+
+    private void InitializeData()
+    {
+        // Если списки пусты (первый запуск), используем данные из инспектора
+        if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
+        {
+            YG2.saves.backgrounds = new List<Goods>(defaultBackgrounds);
+            YG2.saves.items = new List<Goods>(defaultItems);
+            YG2.saves.selectedBackgroundIndex = 0; // Устанавливаем фон с индексом 0 при первом запуске
+            YG2.SaveProgress(); // Сохраняем начальные данные
+        }
+
+        // Проверяем, что списки не пусты
+        if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
+        {
+            Debug.LogError("Список backgrounds пуст! Проверьте данные в инспекторе.");
+            return;
+        }
+
+        if (backgroundRenderer == null)
+        {
+            Debug.LogError("Background Renderer не назначен! Проверьте инспектор.");
+            return;
+        }
+
+        // Устанавливаем сохранённый фон
+        selectedIndexBackgrounds = YG2.saves.selectedBackgroundIndex;
+        SetBackgroundById(selectedIndexBackgrounds); // Устанавливаем фон
+
+        // Инициализируем магазин
+        CreateGoods(YG2.saves.backgrounds, backgroundsContainer, true);
+        CreateGoods(YG2.saves.items, itemsContainer, false);
     }
 
     private void CreateGoods(List<Goods> goodsList, Transform container, bool isBackground)
@@ -68,7 +118,7 @@ public class ShopManager : MonoBehaviour
     {
         if (!isBackground) return; // Меняем фон только для фоновых элементов
 
-        List<Goods> goodsList = isBackground ? backgrounds : items;
+        List<Goods> goodsList = isBackground ? YG2.saves.backgrounds : YG2.saves.items;
         ref int selectedIndex = ref (isBackground ? ref selectedIndexBackgrounds : ref selectedIndexItems);
 
         if (index < 0 || index >= goodsList.Count) return;
@@ -77,8 +127,10 @@ public class ShopManager : MonoBehaviour
         if (TryPurchaseGoods(clickedGoods))
         {
             selectedIndex = index;
+            YG2.saves.selectedBackgroundIndex = selectedIndex; // Сохраняем выбранный индекс
             SetBackgroundById(index); // Устанавливаем новый фон
             UpdateAllGoodsStates(isBackground);
+            YG2.SaveProgress(); // Сохраняем изменения
         }
     }
 
@@ -96,7 +148,7 @@ public class ShopManager : MonoBehaviour
 
     private void UpdateAllGoodsStates(bool isBackground)
     {
-        List<Goods> goodsList = isBackground ? backgrounds : items;
+        List<Goods> goodsList = isBackground ? YG2.saves.backgrounds : YG2.saves.items;
         int selectedIndex = isBackground ? selectedIndexBackgrounds : selectedIndexItems;
 
         for (int i = 0; i < goodsList.Count; i++)
@@ -122,13 +174,13 @@ public class ShopManager : MonoBehaviour
 
     public void SetBackgroundById(int id = 0)
     {
-        if (backgrounds.Count == 0 || backgroundRenderer == null)
+        if (YG2.saves.backgrounds.Count == 0 || backgroundRenderer == null)
         {
             Debug.LogWarning("Backgrounds list is empty or backgroundRenderer is null!");
             return;
         }
 
-        if (id >= 0 && id < backgrounds.Count)
+        if (id >= 0 && id < YG2.saves.backgrounds.Count)
         {
             StartCoroutine(FadeOutAndIn(id));
         }
@@ -143,7 +195,7 @@ public class ShopManager : MonoBehaviour
         GameObject secondaryObject = new("SecondaryBackground");
         SpriteRenderer secondaryRenderer = secondaryObject.AddComponent<SpriteRenderer>();
 
-        secondaryRenderer.sprite = backgrounds[index].sprite;
+        secondaryRenderer.sprite = YG2.saves.backgrounds[index].sprite;
         secondaryRenderer.transform.position = backgroundRenderer.transform.position;
         secondaryRenderer.transform.localScale = backgroundRenderer.transform.localScale;
         secondaryRenderer.sortingOrder = backgroundRenderer.sortingOrder - 1;
@@ -157,7 +209,7 @@ public class ShopManager : MonoBehaviour
             yield return null;
         }
 
-        backgroundRenderer.sprite = backgrounds[index].sprite;
+        backgroundRenderer.sprite = YG2.saves.backgrounds[index].sprite;
         backgroundRenderer.color = Color.white;
         Destroy(secondaryObject);
     }
@@ -232,14 +284,4 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < uiElements.Length; i++)
             uiElements[i].color = targetUIColor;
     }
-}
-
-[System.Serializable]
-public class Goods
-{
-    public Sprite sprite;
-    public int price;
-
-    [HideInInspector] public Image uiImage;
-    [HideInInspector] public TextMeshProUGUI uiText;
 }

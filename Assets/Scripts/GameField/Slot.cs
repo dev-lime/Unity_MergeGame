@@ -34,12 +34,14 @@ public class Slot : MonoBehaviour
 
     private void OnEnable()
     {
-        YG2.onDefaultSaves += InitializeSlot;
+        //YG2.onDefaultSaves += InitializeSlot;
+        YG2.saves.OnResetSaves += InitializeSlot;
     }
 
     private void OnDisable()
     {
-        YG2.onDefaultSaves -= InitializeSlot;
+        //YG2.onDefaultSaves -= InitializeSlot;
+        YG2.saves.OnResetSaves -= InitializeSlot;
     }
 
     void Update()
