@@ -49,7 +49,7 @@ public class BonusObject : MonoBehaviour
         }*/
         if (transform.position.y < -20)
         {
-            print("Trans: " + transform.position.y + "\tscreenBottomY: " + screenBottomY);
+            //print("Trans: " + transform.position.y + "\tscreenBottomY: " + screenBottomY);
             Destroy(gameObject);
         }
 

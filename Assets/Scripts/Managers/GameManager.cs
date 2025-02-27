@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using YG;
 
 public class GameManager : MonoBehaviour

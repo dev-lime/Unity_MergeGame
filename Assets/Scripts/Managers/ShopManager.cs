@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
+    public SoundManager soundManager;
+
     [Header("Goods")]
     public List<Goods> defaultBackgrounds = new(); // Данные из инспектора (для первого запуска)
     public List<Goods> defaultItems = new(); // Данные из инспектора (для первого запуска)
@@ -126,11 +128,16 @@ public class ShopManager : MonoBehaviour
         Goods clickedGoods = goodsList[index];
         if (TryPurchaseGoods(clickedGoods))
         {
+            soundManager.PlayClickSound();
             selectedIndex = index;
             YG2.saves.selectedBackgroundIndex = selectedIndex; // Сохраняем выбранный индекс
             SetBackgroundById(index); // Устанавливаем новый фон
             UpdateAllGoodsStates(isBackground);
             YG2.SaveProgress(); // Сохраняем изменения
+        }
+        else
+        {
+            soundManager.PlayErrorSound();
         }
     }
 

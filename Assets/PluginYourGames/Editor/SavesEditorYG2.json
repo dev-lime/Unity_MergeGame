@@ -7,9 +7,9 @@
         false,
         false
     ],
-    "idSave": 35,
-    "coins": 100,
-    "level": 1,
+    "idSave": 55,
+    "coins": 320,
+    "level": 2,
     "slots": [
         {
             "id": 0,
@@ -64,10 +64,10 @@
             },
             "price": 0,
             "uiImage": {
-                "instanceID": -30814
+                "instanceID": -39890
             },
             "uiText": {
-                "instanceID": -30806
+                "instanceID": -39882
             }
         },
         {
@@ -76,10 +76,10 @@
             },
             "price": 0,
             "uiImage": {
-                "instanceID": -30850
+                "instanceID": -39926
             },
             "uiText": {
-                "instanceID": -30842
+                "instanceID": -39918
             }
         },
         {
@@ -88,10 +88,10 @@
             },
             "price": 4800,
             "uiImage": {
-                "instanceID": -30886
+                "instanceID": -39962
             },
             "uiText": {
-                "instanceID": -30878
+                "instanceID": -39954
             }
         },
         {
@@ -100,10 +100,10 @@
             },
             "price": 12900,
             "uiImage": {
-                "instanceID": -30922
+                "instanceID": -39998
             },
             "uiText": {
-                "instanceID": -30914
+                "instanceID": -39990
             }
         },
         {
@@ -112,10 +112,10 @@
             },
             "price": 39400,
             "uiImage": {
-                "instanceID": -30958
+                "instanceID": -40034
             },
             "uiText": {
-                "instanceID": -30950
+                "instanceID": -40026
             }
         },
         {
@@ -124,10 +124,10 @@
             },
             "price": 72000,
             "uiImage": {
-                "instanceID": -30994
+                "instanceID": -40070
             },
             "uiText": {
-                "instanceID": -30986
+                "instanceID": -40062
             }
         }
     ],
