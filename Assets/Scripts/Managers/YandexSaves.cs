@@ -20,11 +20,15 @@ namespace YG
             new(5, -1, SlotState.Lock),
             new(6, -1, SlotState.Lock),
             new(7, -1, SlotState.Lock),
-            new(8, -1, SlotState.Lock)
+            new(8, -1, SlotState.Lock),
+            new(9, -1, SlotState.Lock),
+            new(10, -1, SlotState.Lock),
+            new(11, -1, SlotState.Lock)
         };
         public List<Goods> backgrounds = new();
         public List<Goods> items = new();
-        public int selectedBackgroundIndex = 0; // Индекс выбранного фона
+        public int selectedBackgroundIndex = 0;
+        public int selectedItemSkinIndex = 0;
 
         private readonly int maxLevel = 12;
         private readonly List<int> prices = new()
@@ -33,6 +37,11 @@ namespace YG
         };
 
         public event Action OnResetSaves;
+
+        public int GetSelectedItemSkinIndex()
+        {
+            return selectedItemSkinIndex;
+        }
 
         public void AddCoins(int addMoney)
         {
@@ -121,7 +130,10 @@ namespace YG
                 new(5, -1, SlotState.Lock),
                 new(6, -1, SlotState.Lock),
                 new(7, -1, SlotState.Lock),
-                new(8, -1, SlotState.Lock)
+                new(8, -1, SlotState.Lock),
+                new(9, -1, SlotState.Lock),
+                new(10, -1, SlotState.Lock),
+                new(11, -1, SlotState.Lock)
             };
 
             OnResetSaves?.Invoke();

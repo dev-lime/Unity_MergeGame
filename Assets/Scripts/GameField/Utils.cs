@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 public static class Utils
 {
@@ -57,6 +58,6 @@ public static class Utils
 
         // ¬ыбираем случайный спрайт из вложенного списка
         //int randomIndex = Random.Range(0, itemGroup.itemSprites.Count);
-        return itemGroup.itemSprites[0];
+        return itemGroup.itemSprites[YG2.saves.GetSelectedItemSkinIndex()];
     }
 }
