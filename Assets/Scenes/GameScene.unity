@@ -6707,6 +6707,10 @@ MonoBehaviour:
   - {fileID: 318316790}
   - {fileID: 1688394685}
   - {fileID: 85669872}
+  - {fileID: 428464621}
+  - {fileID: 13875450}
+  - {fileID: 650427009}
+  - {fileID: 1028586602}
   fadeDuration: 0.5
   backgroundRenderer: {fileID: 1452270490}
 --- !u!1 &1679004362

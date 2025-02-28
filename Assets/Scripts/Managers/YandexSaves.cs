@@ -88,7 +88,7 @@ namespace YG
 
         public int GetAdvReward()
         {
-            return (int)UnityEngine.Random.Range(500, YG2.saves.GetLevel() * 500);
+            return UnityEngine.Random.Range(1000, YG2.saves.GetLevel() * 2000);
         }
 
         public int GetItemSalePrice(int itemId)
