@@ -1,6 +1,8 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 using YG;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +14,8 @@ public class GameManager : MonoBehaviour
     public float delay = 60f; // Время до появления панели
     public float pulseSpeed = 1f; // Скорость пульсации
     public float scaleMultiplier = 1.2f; // Насколько увеличивается
-    
+    public Image playerPhoto;
+
     private float timer;
     private bool isPulsing = false;
     private Vector3 originalScale;
@@ -35,6 +38,11 @@ public class GameManager : MonoBehaviour
         panel.SetActive(false);
         originalScale = panel.transform.localScale;
         timer = delay;
+
+        if (YG2.player.photo != null)
+        {
+            StartCoroutine(DownloadImage(YG2.player.photo));
+        }
     }
 
     void Update()
@@ -60,6 +68,12 @@ public class GameManager : MonoBehaviour
         advText.text = advReward.ToString();
     }
 
+    public void RstSaves()
+    {
+        YG2.SetDefaultSaves();
+        YG2.SaveProgress();
+    }
+
     public void HidePanel()
     {
         YG2.RewardedAdvShow("coins", GetReward);
@@ -72,5 +86,30 @@ public class GameManager : MonoBehaviour
     public void GetReward()
     {
         YG2.saves.AddCoins(advReward);
+    }
+
+    IEnumerator DownloadImage(string url)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("Error downloading image: " + request.error);
+        }
+        else
+        {
+            // Получаем текстуру из загруженных данных
+            Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+
+            // Создаем спрайт из текстуры
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+            // Устанавливаем спрайт в компонент Image
+            if (playerPhoto != null)
+            {
+                playerPhoto.sprite = sprite;
+            }
+        }
     }
 }

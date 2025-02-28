@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            upgradeCostText.text = "";
+            upgradeCostText.text = "-";
         }
     }
 

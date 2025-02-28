@@ -78,7 +78,7 @@ namespace YG
 
         public int GetAddLevelCost()
         {
-            return (int)(math.pow(GetLevel(), 1.5f) * 1000);
+            return (int)(math.pow(GetLevel(), 2f) * 2000);
         }
 
         public int GetAddItemCost()

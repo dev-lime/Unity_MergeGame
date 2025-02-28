@@ -4,6 +4,7 @@ using YG;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class ShopManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class ShopManager : MonoBehaviour
     public Transform itemsContainer;
     public GameObject itemPrefab;
     public Image[] uiElements; // UI элементы (кнопки, панели и т.п.)
+    public Button[] uiButtons; // Кнопки, которые нужно окрашивать
 
     [Header("Background Settings")]
     public float fadeDuration = 0.5f;
@@ -63,6 +65,7 @@ public class ShopManager : MonoBehaviour
             YG2.saves.backgrounds = new List<Goods>(defaultBackgrounds);
             YG2.saves.items = new List<Goods>(defaultItems);
             YG2.saves.selectedBackgroundIndex = 0; // Устанавливаем фон с индексом 0 при первом запуске
+            YG2.saves.selectedItemSkinIndex = 0; // Устанавливаем скин с индексом 0 при первом запуске
             YG2.SaveProgress(); // Сохраняем начальные данные
         }
 
@@ -79,13 +82,20 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
-        // Устанавливаем сохранённый фон
+        // Устанавливаем сохранённые индексы
         selectedIndexBackgrounds = YG2.saves.selectedBackgroundIndex;
-        SetBackgroundById(selectedIndexBackgrounds); // Устанавливаем фон
+        selectedIndexItems = YG2.saves.selectedItemSkinIndex;
+
+        // Устанавливаем фон
+        SetBackgroundById(selectedIndexBackgrounds);
 
         // Инициализируем магазин
         CreateGoods(YG2.saves.backgrounds, backgroundsContainer, true);
         CreateGoods(YG2.saves.items, itemsContainer, false);
+
+        // Обновляем визуал для обоих списков
+        UpdateAllGoodsStates(YG2.saves.backgrounds, selectedIndexBackgrounds);
+        UpdateAllGoodsStates(YG2.saves.items, selectedIndexItems);
     }
 
     private void CreateGoods(List<Goods> goodsList, Transform container, bool isBackground)
@@ -97,7 +107,7 @@ public class ShopManager : MonoBehaviour
 
             InitializeGoodsUI(goods, newItem);
             SetupGoodsButton(goods, newItem, i, isBackground);
-            UpdateGoodsState(goods, i, isBackground);
+            UpdateGoodsState(goods, i, isBackground ? selectedIndexBackgrounds : selectedIndexItems);
         }
     }
 
@@ -118,21 +128,32 @@ public class ShopManager : MonoBehaviour
 
     public void OnGoodsClick(int index, bool isBackground)
     {
-        if (!isBackground) return; // Меняем фон только для фоновых элементов
-
         List<Goods> goodsList = isBackground ? YG2.saves.backgrounds : YG2.saves.items;
         ref int selectedIndex = ref (isBackground ? ref selectedIndexBackgrounds : ref selectedIndexItems);
 
         if (index < 0 || index >= goodsList.Count) return;
 
         Goods clickedGoods = goodsList[index];
+
         if (TryPurchaseGoods(clickedGoods))
         {
             soundManager.PlayClickSound();
             selectedIndex = index;
-            YG2.saves.selectedBackgroundIndex = selectedIndex; // Сохраняем выбранный индекс
-            SetBackgroundById(index); // Устанавливаем новый фон
-            UpdateAllGoodsStates(isBackground);
+
+            if (isBackground)
+            {
+                YG2.saves.selectedBackgroundIndex = selectedIndex; // Сохраняем выбранный индекс фона
+                SetBackgroundById(index); // Устанавливаем новый фон
+            }
+            else
+            {
+                YG2.saves.selectedItemSkinIndex = index; // Сохраняем выбранный индекс скина
+            }
+
+            // Обновляем визуал для обоих списков
+            UpdateAllGoodsStates(YG2.saves.backgrounds, selectedIndexBackgrounds);
+            UpdateAllGoodsStates(YG2.saves.items, selectedIndexItems);
+
             YG2.SaveProgress(); // Сохраняем изменения
         }
         else
@@ -153,21 +174,16 @@ public class ShopManager : MonoBehaviour
         return goods.price == 0;
     }
 
-    private void UpdateAllGoodsStates(bool isBackground)
+    private void UpdateAllGoodsStates(List<Goods> goodsList, int selectedIndex)
     {
-        List<Goods> goodsList = isBackground ? YG2.saves.backgrounds : YG2.saves.items;
-        int selectedIndex = isBackground ? selectedIndexBackgrounds : selectedIndexItems;
-
         for (int i = 0; i < goodsList.Count; i++)
         {
-            UpdateGoodsState(goodsList[i], i, isBackground);
+            UpdateGoodsState(goodsList[i], i, selectedIndex);
         }
     }
 
-    private void UpdateGoodsState(Goods goods, int index, bool isBackground)
+    private void UpdateGoodsState(Goods goods, int index, int selectedIndex)
     {
-        int selectedIndex = isBackground ? selectedIndexBackgrounds : selectedIndexItems;
-
         if (goods.uiImage != null)
         {
             goods.uiImage.sprite = (goods.price > 0) ? closedSprite :
@@ -266,7 +282,17 @@ public class ShopManager : MonoBehaviour
         float brightness = backgroundColor.grayscale;
         Color targetUIColor = brightness < 0.5f ? backgroundColor * 1.5f : backgroundColor * 0.7f;
 
+        // Обновляем цвет UI элементов
         StartCoroutine(AnimateUIColorChange(targetUIColor, duration));
+
+        // Обновляем цвет кнопок с другим оттенком
+        Color buttonColor = new Color(
+            Mathf.Clamp(backgroundColor.r * 0.8f, 0, 1),
+            Mathf.Clamp(backgroundColor.g * 0.8f, 0, 1),
+            Mathf.Clamp(backgroundColor.b * 0.8f, 0, 1),
+            1
+        );
+        StartCoroutine(AnimateUIButtonColorChange(buttonColor, duration));
     }
 
     private IEnumerator AnimateUIColorChange(Color targetUIColor, float duration)
@@ -290,5 +316,28 @@ public class ShopManager : MonoBehaviour
 
         for (int i = 0; i < uiElements.Length; i++)
             uiElements[i].color = targetUIColor;
+    }
+
+    private IEnumerator AnimateUIButtonColorChange(Color targetColor, float duration)
+    {
+        float elapsedTime = 0;
+        Color[] startColors = new Color[uiButtons.Length];
+
+        for (int i = 0; i < uiButtons.Length; i++)
+            startColors[i] = uiButtons[i].image.color;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+
+            for (int i = 0; i < uiButtons.Length; i++)
+                uiButtons[i].image.color = Color.Lerp(startColors[i], targetColor, t);
+
+            yield return null;
+        }
+
+        for (int i = 0; i < uiButtons.Length; i++)
+            uiButtons[i].image.color = targetColor;
     }
 }
