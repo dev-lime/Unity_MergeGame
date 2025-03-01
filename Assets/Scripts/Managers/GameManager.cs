@@ -99,16 +99,26 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Получаем текстуру из загруженных данных
+            // Загружаем текстуру
             Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
 
-            // Создаем спрайт из текстуры
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-            // Устанавливаем спрайт в компонент Image
-            if (playerPhoto != null)
+            if (texture == null)
             {
-                playerPhoto.sprite = sprite;
+                Debug.LogError("Failed to load texture from URL: " + url);
+            }
+            else
+            {
+                // Создаём спрайт
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+                // Устанавливаем спрайт в Image
+                if (playerPhoto != null)
+                {
+                    playerPhoto.sprite = sprite;
+
+                    // Опционально: заставляем Image заполнить круглый контейнер
+                    playerPhoto.rectTransform.sizeDelta = Vector2.zero; // Подстраивается под Mask
+                }
             }
         }
     }

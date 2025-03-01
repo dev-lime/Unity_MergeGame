@@ -131,6 +131,13 @@ public class ShopManager : MonoBehaviour
         List<Goods> goodsList = isBackground ? YG2.saves.backgrounds : YG2.saves.items;
         ref int selectedIndex = ref (isBackground ? ref selectedIndexBackgrounds : ref selectedIndexItems);
 
+        // Если выбранный элемент уже активен, ничего не делаем
+        if (index == selectedIndex)
+        {
+            soundManager.PlayClickSound();
+            return;
+        }
+
         if (index < 0 || index >= goodsList.Count) return;
 
         Goods clickedGoods = goodsList[index];

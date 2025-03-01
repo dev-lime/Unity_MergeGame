@@ -1,0 +1,285 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 7,
+    "coins": 300,
+    "level": 1,
+    "slots": [
+        {
+            "id": 0,
+            "currentItemId": -1,
+            "state": 0
+        },
+        {
+            "id": 1,
+            "currentItemId": -1,
+            "state": 0
+        },
+        {
+            "id": 2,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 3,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 4,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 5,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 6,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 7,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 8,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 9,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 10,
+            "currentItemId": -1,
+            "state": 2
+        },
+        {
+            "id": 11,
+            "currentItemId": -1,
+            "state": 2
+        }
+    ],
+    "backgrounds": [
+        {
+            "sprite": {
+                "instanceID": 46148
+            },
+            "price": 0,
+            "uiImage": {
+                "instanceID": -2258
+            },
+            "uiText": {
+                "instanceID": -2250
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46150
+            },
+            "price": 0,
+            "uiImage": {
+                "instanceID": -2294
+            },
+            "uiText": {
+                "instanceID": -2286
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46152
+            },
+            "price": 4800,
+            "uiImage": {
+                "instanceID": -2330
+            },
+            "uiText": {
+                "instanceID": -2322
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46154
+            },
+            "price": 12900,
+            "uiImage": {
+                "instanceID": -2366
+            },
+            "uiText": {
+                "instanceID": -2358
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46156
+            },
+            "price": 39400,
+            "uiImage": {
+                "instanceID": -2402
+            },
+            "uiText": {
+                "instanceID": -2394
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46158
+            },
+            "price": 72000,
+            "uiImage": {
+                "instanceID": -2438
+            },
+            "uiText": {
+                "instanceID": -2430
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46160
+            },
+            "price": 86000,
+            "uiImage": {
+                "instanceID": -2474
+            },
+            "uiText": {
+                "instanceID": -2466
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46162
+            },
+            "price": 144100,
+            "uiImage": {
+                "instanceID": -2510
+            },
+            "uiText": {
+                "instanceID": -2502
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46164
+            },
+            "price": 171050,
+            "uiImage": {
+                "instanceID": -2546
+            },
+            "uiText": {
+                "instanceID": -2538
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46166
+            },
+            "price": 210700,
+            "uiImage": {
+                "instanceID": -2582
+            },
+            "uiText": {
+                "instanceID": -2574
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46168
+            },
+            "price": 244100,
+            "uiImage": {
+                "instanceID": -2618
+            },
+            "uiText": {
+                "instanceID": -2610
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46170
+            },
+            "price": 299900,
+            "uiImage": {
+                "instanceID": -2654
+            },
+            "uiText": {
+                "instanceID": -2646
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46172
+            },
+            "price": 360000,
+            "uiImage": {
+                "instanceID": -2690
+            },
+            "uiText": {
+                "instanceID": -2682
+            }
+        }
+    ],
+    "items": [
+        {
+            "sprite": {
+                "instanceID": 46174
+            },
+            "price": 0,
+            "uiImage": {
+                "instanceID": -2726
+            },
+            "uiText": {
+                "instanceID": -2718
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46176
+            },
+            "price": 12500,
+            "uiImage": {
+                "instanceID": -2762
+            },
+            "uiText": {
+                "instanceID": -2754
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46178
+            },
+            "price": 86000,
+            "uiImage": {
+                "instanceID": -2798
+            },
+            "uiText": {
+                "instanceID": -2790
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 46180
+            },
+            "price": 192000,
+            "uiImage": {
+                "instanceID": -2834
+            },
+            "uiText": {
+                "instanceID": -2826
+            }
+        }
+    ],
+    "selectedBackgroundIndex": 1,
+    "selectedItemSkinIndex": 0
+}
