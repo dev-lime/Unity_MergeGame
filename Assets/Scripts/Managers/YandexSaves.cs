@@ -93,7 +93,7 @@ namespace YG
 
         public int GetItemSalePrice(int itemId)
         {
-            return prices[itemId]*(1+GetLevel()/10);
+            return prices[itemId] * (1+GetLevel()/10) * (GetSelectedItemSkinIndex()+1);
         }
 
         public SlotData GetSlotDataById(int id)

@@ -21,8 +21,8 @@ public class EventManager : MonoBehaviour
 
     private float spawnY;
     private Vector2 spawnRangeX;
-    private Vector2 spawnIntervalRange = new Vector2(YG2.saves.GetMaxLevel()*4 - YG2.saves.GetLevel()*2,
-                                                    (YG2.saves.GetMaxLevel()*4 - YG2.saves.GetLevel()*2) * 4); // Диапазон времени между спавнами
+    private Vector2 spawnIntervalRange = new Vector2(YG2.saves.GetMaxLevel()*2 - YG2.saves.GetLevel(),
+                                                    (YG2.saves.GetMaxLevel()*2 - YG2.saves.GetLevel()) * 4); // Диапазон времени между спавнами
 
     void Start()
     {
@@ -59,9 +59,6 @@ public class EventManager : MonoBehaviour
     {
         while (true)
         {
-            spawnIntervalRange = new Vector2(YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1,
-                                            (YG2.saves.GetMaxLevel() - YG2.saves.GetLevel() + 1) * 2);
-
             float waitTime = Random.Range(spawnIntervalRange.x, spawnIntervalRange.y);
             yield return new WaitForSeconds(waitTime);
 
