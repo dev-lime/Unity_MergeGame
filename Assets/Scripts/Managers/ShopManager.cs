@@ -59,43 +59,68 @@ public class ShopManager : MonoBehaviour
 
     private void InitializeData()
     {
-        // Если списки пусты (первый запуск), используем данные из инспектора
-        if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
+        try
         {
+            // Если списки пусты (первый запуск), используем данные из инспектора
+            if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
+            {
+                YG2.saves.backgrounds = new List<Goods>(defaultBackgrounds);
+                YG2.saves.items = new List<Goods>(defaultItems);
+                YG2.saves.selectedBackgroundIndex = 0; // Устанавливаем фон с индексом 0 при первом запуске
+                YG2.saves.selectedItemSkinIndex = 0; // Устанавливаем скин с индексом 0 при первом запуске
+                YG2.SaveProgress(); // Сохраняем начальные данные
+            }
+
+            // Проверяем, что списки не пусты
+            if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
+            {
+                Debug.LogError("Список backgrounds пуст! Проверьте данные в инспекторе.");
+                return;
+            }
+
+            if (backgroundRenderer == null)
+            {
+                Debug.LogError("Background Renderer не назначен! Проверьте инспектор.");
+                return;
+            }
+
+            // Устанавливаем сохранённые индексы
+            selectedIndexBackgrounds = YG2.saves.selectedBackgroundIndex;
+            selectedIndexItems = YG2.saves.selectedItemSkinIndex;
+
+            // Устанавливаем фон
+            SetBackgroundById(selectedIndexBackgrounds);
+
+            // Инициализируем магазин
+            CreateGoods(YG2.saves.backgrounds, backgroundsContainer, true);
+            CreateGoods(YG2.saves.items, itemsContainer, false);
+
+            // Обновляем визуал для обоих списков
+            UpdateAllGoodsStates(YG2.saves.backgrounds, selectedIndexBackgrounds);
+            UpdateAllGoodsStates(YG2.saves.items, selectedIndexItems);
+        }
+        catch (Exception ex) // Перехватываем любые исключения
+        {
+            Debug.LogError($"Ошибка при загрузке сохранений магазина: {ex.Message}");
+
+            // Сбрасываем сохранения магазина и используем значения по умолчанию
             YG2.saves.backgrounds = new List<Goods>(defaultBackgrounds);
             YG2.saves.items = new List<Goods>(defaultItems);
-            YG2.saves.selectedBackgroundIndex = 0; // Устанавливаем фон с индексом 0 при первом запуске
-            YG2.saves.selectedItemSkinIndex = 0; // Устанавливаем скин с индексом 0 при первом запуске
-            YG2.SaveProgress(); // Сохраняем начальные данные
+            YG2.saves.selectedBackgroundIndex = 0;
+            YG2.saves.selectedItemSkinIndex = 0;
+            YG2.SaveProgress(); // Сохраняем сброшенные данные
+
+            // Устанавливаем фон по умолчанию
+            SetBackgroundById(0);
+
+            // Инициализируем магазин с данными по умолчанию
+            CreateGoods(YG2.saves.backgrounds, backgroundsContainer, true);
+            CreateGoods(YG2.saves.items, itemsContainer, false);
+
+            // Обновляем визуал для обоих списков
+            UpdateAllGoodsStates(YG2.saves.backgrounds, selectedIndexBackgrounds);
+            UpdateAllGoodsStates(YG2.saves.items, selectedIndexItems);
         }
-
-        // Проверяем, что списки не пусты
-        if (YG2.saves.backgrounds == null || YG2.saves.backgrounds.Count == 0)
-        {
-            Debug.LogError("Список backgrounds пуст! Проверьте данные в инспекторе.");
-            return;
-        }
-
-        if (backgroundRenderer == null)
-        {
-            Debug.LogError("Background Renderer не назначен! Проверьте инспектор.");
-            return;
-        }
-
-        // Устанавливаем сохранённые индексы
-        selectedIndexBackgrounds = YG2.saves.selectedBackgroundIndex;
-        selectedIndexItems = YG2.saves.selectedItemSkinIndex;
-
-        // Устанавливаем фон
-        SetBackgroundById(selectedIndexBackgrounds);
-
-        // Инициализируем магазин
-        CreateGoods(YG2.saves.backgrounds, backgroundsContainer, true);
-        CreateGoods(YG2.saves.items, itemsContainer, false);
-
-        // Обновляем визуал для обоих списков
-        UpdateAllGoodsStates(YG2.saves.backgrounds, selectedIndexBackgrounds);
-        UpdateAllGoodsStates(YG2.saves.items, selectedIndexItems);
     }
 
     private void CreateGoods(List<Goods> goodsList, Transform container, bool isBackground)

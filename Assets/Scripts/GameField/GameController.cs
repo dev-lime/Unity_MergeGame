@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using YG;
 
-public class GameController : MonoBehaviour 
+public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
@@ -25,6 +27,9 @@ public class GameController : MonoBehaviour
 
     private Dictionary<int, Slot> slotDictionary;
 
+    [Header("Main Canvas")]
+    [SerializeField] private GraphicRaycaster graphicRaycaster; // Ссылка на GraphicRaycaster
+
     private void Awake()
     {
         instance = this;
@@ -40,34 +45,52 @@ public class GameController : MonoBehaviour
         upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
 
         slotDictionary = new Dictionary<int, Slot>();
-        
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].id = i;
             slots[i].InitializeSlot();
             slotDictionary.Add(i, slots[i]);
         }
+
+        // Автоматически находим GraphicRaycaster, если он не задан в инспекторе
+        if (graphicRaycaster == null)
+        {
+            graphicRaycaster = FindFirstObjectByType<GraphicRaycaster>();
+        }
     }
 
     // Handle user input
-    private void Update() 
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Проверяем, находится ли курсор мыши над UI-элементом
+        bool isOverUI = IsPointerOverAnyUI();
+
+        if (Input.GetMouseButtonDown(0)) // Левый клик мыши
         {
-            SendRayCast();
+            if (!isOverUI) // Если курсор не над UI
+            {
+                SendRayCast();
+            }
         }
 
-        if (Input.GetMouseButton(0) && carryingItem)
+        if (Input.GetMouseButton(0) && carryingItem) // Удерживание левой кнопки мыши
         {
-            OnItemSelected();
+            if (!isOverUI) // Если курсор не над UI
+            {
+                OnItemSelected();
+            }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) // Отпускание левой кнопки мыши
         {
-            // Drop item
-            SendRayCast();
+            if (!isOverUI) // Если курсор не над UI
+            {
+                SendRayCast();
+            }
         }
 
+        // Обновление текста цены продажи предмета
         if (carryingItem != null)
         {
             saleItemPriceText.text = "+" + YG2.saves.GetItemSalePrice(carryingItem.itemId).ToString();
@@ -77,6 +100,7 @@ public class GameController : MonoBehaviour
             saleItemPriceText.text = "";
         }
 
+        // Обновление текста стоимости улучшения
         if (YG2.saves.GetLevel() < maxItemId)
         {
             upgradeCostText.text = YG2.saves.GetAddLevelCost().ToString();
@@ -87,6 +111,24 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Метод для проверки, находится ли курсор или касание над любым UI элементом
+    private bool IsPointerOverAnyUI()
+    {
+        // Создаем данные для Raycast
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = Input.mousePosition; // Позиция курсора или касания
+
+        // Список результатов Raycast
+        System.Collections.Generic.List<RaycastResult> results = new System.Collections.Generic.List<RaycastResult>();
+
+        // Выполняем Raycast
+        graphicRaycaster.Raycast(pointerData, results);
+
+        // Если есть хотя бы один результат, значит курсор над UI элементом
+        return results.Count > 0;
+    }
+
+    // Остальной код остается без изменений
     void SendRayCast()
     {
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -149,7 +191,7 @@ public class GameController : MonoBehaviour
                 return;
             }
         }
-        
+
         if (!carryingItem)
         {
             return;
@@ -157,12 +199,13 @@ public class GameController : MonoBehaviour
         OnItemCarryFail();
     }
 
+    // Остальные методы остаются без изменений
     void OnItemSelected()
     {
         _target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _target.z = 0;
         var delta = 10 * Time.deltaTime;
-        
+
         delta *= Vector3.Distance(transform.position, _target);
         carryingItem.transform.position = Vector3.MoveTowards(carryingItem.transform.position, _target, delta);
     }
@@ -171,7 +214,7 @@ public class GameController : MonoBehaviour
     {
         var slot = GetSlotById(targetSlotId);
         Destroy(slot.currentItem.gameObject);
-        
+
         slot.CreateItem(carryingItem.itemId + 1);
 
         Destroy(carryingItem.gameObject);

@@ -512,3 +512,6 @@ MonoBehaviour:
   scalemodifier: 3
   unlockCostText: {fileID: 5422063109311228624}
   unlockSlotCost: 5000
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 1

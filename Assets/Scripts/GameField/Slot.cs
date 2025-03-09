@@ -1,5 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using YG;
 
 public class Slot : MonoBehaviour
@@ -23,6 +25,9 @@ public class Slot : MonoBehaviour
     private bool isFading = false;
     private readonly float fadeSpeed = 3f; // Скорость исчезновения
 
+    [Header("Main Canvas")]
+    [SerializeField] private GraphicRaycaster graphicRaycaster; // Ссылка на GraphicRaycaster
+
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -30,17 +35,21 @@ public class Slot : MonoBehaviour
         soundManager = SoundManager.Instance;
 
         SetAlpha(unlockCostText, 1f);
+
+        // Если graphicRaycaster не задан в инспекторе, находим его автоматически
+        if (graphicRaycaster == null)
+        {
+            graphicRaycaster = FindFirstObjectByType<GraphicRaycaster>();
+        }
     }
 
     private void OnEnable()
     {
-        //YG2.onDefaultSaves += InitializeSlot;
         YG2.saves.OnResetSaves += InitializeSlot;
     }
 
     private void OnDisable()
     {
-        //YG2.onDefaultSaves -= InitializeSlot;
         YG2.saves.OnResetSaves -= InitializeSlot;
     }
 
@@ -48,11 +57,9 @@ public class Slot : MonoBehaviour
     {
         if (isFading)
         {
-            // Постепенное уменьшение прозрачности для объекта и всех его дочерних объектов
             float alpha = Mathf.Clamp01(unlockCostText.color.a - fadeSpeed * Time.deltaTime);
             SetAlpha(unlockCostText, alpha);
 
-            // Если прозрачность стала 0, отключаем объект и все его дочерние элементы
             if (alpha <= 0)
             {
                 unlockCostText.gameObject.SetActive(false);
@@ -76,7 +83,6 @@ public class Slot : MonoBehaviour
         else
         {
             CreateItem(YGSlots.currentItemId);
-            //Debug.Log(id + ": " + currentItem.id);
         }
 
         unlockCostText.text = unlockSlotCost.ToString();
@@ -90,10 +96,9 @@ public class Slot : MonoBehaviour
         YG2.saves.SaveSlotData(new SlotData(id, currentItemId, state));
     }
 
-    public void CreateItem(int id) 
+    public void CreateItem(int id)
     {
         var itemGO = (GameObject)Instantiate(Resources.Load("Prefabs/Item"));
-        
         itemGO.transform.SetParent(this.transform);
         itemGO.transform.localPosition = Vector3.zero;
         itemGO.transform.localScale = Vector3.one * scalemodifier;
@@ -118,6 +123,12 @@ public class Slot : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Проверяем, находится ли курсор или касание над любым UI элементом
+        if (IsPointerOverAnyUI())
+        {
+            return; // Если да, не обрабатываем нажатие
+        }
+
         if (state == SlotState.Lock)
         {
             if (YG2.saves.GetCoins() >= unlockSlotCost && !isFading)
@@ -138,9 +149,14 @@ public class Slot : MonoBehaviour
         ChangeStateTo(SlotState.Empty);
         YG2.saves.SubCoins(unlockSlotCost);
     }
-    
+
     public void OnMouseEnter()
     {
+        /*if (IsPointerOverAnyUI())
+        {
+            return;
+        }*/
+
         if (!gameController.GetCarringItem() || state == SlotState.Empty)
             shadow.SetActive(true);
     }
@@ -151,23 +167,37 @@ public class Slot : MonoBehaviour
             shadow.SetActive(false);
     }
 
+    // Метод для проверки, находится ли курсор или касание над любым UI элементом
+    private bool IsPointerOverAnyUI()
+    {
+        // Создаем данные для Raycast
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = Input.mousePosition; // Позиция курсора или касания
+
+        // Список результатов Raycast
+        System.Collections.Generic.List<RaycastResult> results = new System.Collections.Generic.List<RaycastResult>();
+
+        // Выполняем Raycast
+        graphicRaycaster.Raycast(pointerData, results);
+
+        // Если есть хотя бы один результат, значит курсор над UI элементом
+        return results.Count > 0;
+    }
+
     // Метод для установки прозрачности (альфа-канала) на объект и все его дочерние элементы
     void SetAlpha(TextMeshPro text, float alpha)
     {
-        // Устанавливаем прозрачность для текущего объекта
         Color color = text.color;
         text.color = new Color(color.r, color.g, color.b, alpha);
 
-        // Рекурсивно обрабатываем все дочерние объекты
         foreach (Transform child in text.transform)
         {
             TextMeshPro childText = child.GetComponent<TextMeshPro>();
             if (childText != null)
             {
-                SetAlpha(childText, alpha); // Рекурсивно меняем прозрачность дочернего объекта
+                SetAlpha(childText, alpha);
             }
 
-            // Для дочерних объектов с компонентом SpriteRenderer
             SpriteRenderer childSprite = child.GetComponent<SpriteRenderer>();
             if (childSprite != null)
             {
@@ -179,33 +209,7 @@ public class Slot : MonoBehaviour
     // Метод для установки прозрачности (альфа-канала) для объекта с SpriteRenderer
     void SetAlpha(SpriteRenderer sprite, float alpha)
     {
-        // Устанавливаем прозрачность для спрайта
         Color color = sprite.color;
         sprite.color = new Color(color.r, color.g, color.b, alpha);
-    }
-
-    private void ReceiveItem(int id)
-    {
-        switch (state)
-        {
-            case SlotState.Empty: 
-
-                CreateItem(id);
-                ChangeStateTo(SlotState.Full);
-                break;
-
-            case SlotState.Full: 
-                if (currentItem.id == id)
-                {
-                    //Merged
-                    Debug.Log("Merged");
-                }
-                else
-                {
-                    //Push item back
-                    Debug.Log("Push back");
-                }
-            break;
-        }
     }
 }
