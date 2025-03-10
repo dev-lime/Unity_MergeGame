@@ -68,6 +68,7 @@ public class SoundManager : MonoBehaviour
         if (musicSource != null && isMusicPlaying)
         {
             musicSource.Play();
+            musicSource.volume = 1; // Устанавливаем полную громкость
         }
     }
 
@@ -76,17 +77,47 @@ public class SoundManager : MonoBehaviour
         // Переключаем состояние музыки
         if (isMusicPlaying)
         {
-            musicSource.Pause(); // Приостанавливаем музыку
+            StartCoroutine(FadeOutMusic()); // Плавно уменьшаем громкость и останавливаем музыку
             StartCoroutine(AnimateImageChange(0)); // Уменьшаем spriteOn до 0
         }
         else
         {
-            musicSource.UnPause(); // Возобновляем музыку
+            StartCoroutine(FadeInMusic()); // Плавно увеличиваем громкость и воспроизводим музыку
             StartCoroutine(AnimateImageChange(spriteSize.y)); // Увеличиваем spriteOn до нужного размера
         }
 
         // Инвертируем состояние
         isMusicPlaying = !isMusicPlaying;
+    }
+
+    private System.Collections.IEnumerator FadeOutMusic()
+    {
+        float fadeDuration = 0.5f; // Длительность затухания
+        float startVolume = musicSource.volume;
+
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        musicSource.volume = 0;
+        musicSource.Pause(); // Останавливаем музыку после затухания
+    }
+
+    private System.Collections.IEnumerator FadeInMusic()
+    {
+        float fadeDuration = 0.5f; // Длительность появления
+        musicSource.UnPause(); // Возобновляем музыку
+        musicSource.volume = 0; // Начинаем с нулевой громкости
+
+        while (musicSource.volume < 1)
+        {
+            musicSource.volume += Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        musicSource.volume = 1; // Устанавливаем полную громкость
     }
 
     private System.Collections.IEnumerator AnimateImageChange(float targetHeight)
