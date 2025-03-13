@@ -1,3 +1,3 @@
 Build path: E:/Works/Unity Projects/Project_Merge/Build/Build
-Build number: 71
+Build number: 72
 PluginYG version: 2.0031

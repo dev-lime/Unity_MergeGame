@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 [System.Serializable]
 public class TutorialStep
@@ -15,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     public List<TutorialStep> tutorialSteps; // Список этапов обучения
     public Image fingerIcon; // Иконка пальца (UI Image)
     public float animationDuration = 2f; // Длительность анимации перемещения
+    public GameObject pulseWavePrefab; // Префаб для UI-волны
 
     private int currentStepIndex = 0; // Индекс текущего этапа
     private bool isMoving = false; // Флаг перемещения иконки
@@ -25,6 +27,8 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        gameObject.SetActive(!YG2.saves.isTutorialCompleted);
+
         if (tutorialSteps.Count > 0)
         {
             StartStep(currentStepIndex); // Запуск первого этапа
@@ -59,6 +63,9 @@ public class TutorialManager : MonoBehaviour
         endPosition = currentStep.endPoint.position; // Конечная позиция
         animationProgress = 0f; // Сброс прогресса анимации
         isMoving = true; // Запуск анимации
+
+        // Создать волну в начальной точке
+        CreatePulseWave(startPosition);
     }
 
     void AnimateFingerIcon()
@@ -79,6 +86,9 @@ public class TutorialManager : MonoBehaviour
             // Если анимация завершена, возвращаем иконку к начальной позиции
             animationProgress = 0f;
             fingerIcon.rectTransform.position = startPosition;
+
+            // Создать волну в конечной точке
+            CreatePulseWave(endPosition);
         }
     }
 
@@ -97,10 +107,64 @@ public class TutorialManager : MonoBehaviour
 
     void CompleteTutorial()
     {
+        YG2.saves.isTutorialCompleted = true;
         isTutorialCompleted = true; // Обучение завершено
         isMoving = false; // Остановка анимации
-        fingerIcon.gameObject.SetActive(false); // Деактивация иконки пальца
         gameObject.SetActive(false); // Деактивация объекта с этим скриптом
         Debug.Log("Tutorial completed and deactivated!");
+    }
+
+    void CreatePulseWave(Vector3 position)
+    {
+        if (pulseWavePrefab != null)
+        {
+            // Создать волну на указанной позиции
+            GameObject wave = Instantiate(pulseWavePrefab, position, Quaternion.identity, transform);
+            wave.transform.SetAsFirstSibling(); // Поместить волну под другие UI элементы
+
+            // Запустить анимацию волны
+            StartCoroutine(AnimatePulseWave(wave));
+        }
+        else
+        {
+            Debug.LogWarning("PulseWavePrefab is not assigned!");
+        }
+    }
+
+    IEnumerator AnimatePulseWave(GameObject wave)
+    {
+        // Получаем компоненты
+        RectTransform rectTransform = wave.GetComponent<RectTransform>();
+        CanvasGroup canvasGroup = wave.GetComponent<CanvasGroup>();
+
+        if (rectTransform == null || canvasGroup == null)
+        {
+            Debug.LogWarning("PulseWavePrefab is missing RectTransform or CanvasGroup!");
+            Destroy(wave); // Уничтожаем объект, если он не настроен правильно
+            yield break;
+        }
+
+        float duration = 1f; // Длительность анимации волны
+        float elapsedTime = 0f;
+
+        Vector3 initialScale = Vector3.one * 0.5f; // Начальный масштаб
+        Vector3 targetScale = Vector3.one * 2f; // Конечный масштаб
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+
+            // Масштабирование
+            rectTransform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+
+            // Уменьшение прозрачности
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
+
+            yield return null;
+        }
+
+        // Уничтожить волну после завершения анимации
+        Destroy(wave);
     }
 }

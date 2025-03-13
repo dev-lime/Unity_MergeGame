@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class SoundManager : MonoBehaviour
 {
@@ -23,8 +24,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private Button targetButton; // Кнопка для управления музыкой
     [SerializeField] private Sprite spriteOn;  // Спрайт, когда музыка играет
     [SerializeField] private Vector2 spriteSize = new Vector2(64, 64); // Размер спрайтов
+    [SerializeField] private float targetVolume = 0.1f;
 
-    private bool isMusicPlaying = true;
     private Image childImage; // Дочерний Image для spriteOn
 
     private void Awake()
@@ -64,20 +65,29 @@ public class SoundManager : MonoBehaviour
         // Создаем дочерний объект с spriteOn
         CreateChildImage(spriteOn);
 
-        // Убедимся, что музыка играет при старте
-        if (musicSource != null && isMusicPlaying)
+        // Убедимся, что музыка играет при старте, если YG2.saves.isMusicPlaying == true
+        if (musicSource != null)
         {
-            musicSource.Play();
-            musicSource.volume = 1; // Устанавливаем полную громкость
+            if (YG2.saves.isMusicPlaying)
+            {
+                musicSource.Play();
+                musicSource.volume = musicSource.volume; // Устанавливаем громкость из инспектора
+                childImage.rectTransform.sizeDelta = spriteSize; // Устанавливаем размер спрайта
+            }
+            else
+            {
+                musicSource.Pause();
+                childImage.rectTransform.sizeDelta = new Vector2(spriteSize.x, 0); // Скрываем спрайт
+            }
         }
     }
 
     void ToggleMusic()
     {
         // Переключаем состояние музыки
-        if (isMusicPlaying)
+        if (YG2.saves.isMusicPlaying)
         {
-            StartCoroutine(FadeOutMusic()); // Плавно уменьшаем громкость и останавливаем музыку
+            StartCoroutine(FadeOutMusic()); // Плавно уменьшаем громкость и ставим на паузу
             StartCoroutine(AnimateImageChange(0)); // Уменьшаем spriteOn до 0
         }
         else
@@ -87,7 +97,10 @@ public class SoundManager : MonoBehaviour
         }
 
         // Инвертируем состояние
-        isMusicPlaying = !isMusicPlaying;
+        YG2.saves.isMusicPlaying = !YG2.saves.isMusicPlaying;
+
+        // Сохраняем состояние музыки
+        YG2.SaveProgress();
     }
 
     private System.Collections.IEnumerator FadeOutMusic()
@@ -102,22 +115,22 @@ public class SoundManager : MonoBehaviour
         }
 
         musicSource.volume = 0;
-        musicSource.Pause(); // Останавливаем музыку после затухания
+        musicSource.Pause(); // Ставим музыку на паузу
     }
 
     private System.Collections.IEnumerator FadeInMusic()
     {
         float fadeDuration = 0.5f; // Длительность появления
-        musicSource.UnPause(); // Возобновляем музыку
+        musicSource.UnPause(); // Снимаем с паузы
         musicSource.volume = 0; // Начинаем с нулевой громкости
 
-        while (musicSource.volume < 1)
+        while (musicSource.volume < targetVolume)
         {
-            musicSource.volume += Time.deltaTime / fadeDuration;
+            musicSource.volume += targetVolume * Time.deltaTime / fadeDuration;
             yield return null;
         }
 
-        musicSource.volume = 1; // Устанавливаем полную громкость
+        musicSource.volume = targetVolume;
     }
 
     private System.Collections.IEnumerator AnimateImageChange(float targetHeight)

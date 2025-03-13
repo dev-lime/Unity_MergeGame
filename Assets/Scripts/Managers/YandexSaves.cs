@@ -12,8 +12,8 @@ namespace YG
         public int coins = 1500;
         public int level = 1;
         public SlotData[] slots = {
-            new(0, -1, SlotState.Empty),
-            new(1, -1, SlotState.Empty),
+            new(0, 0, SlotState.Full),
+            new(1, 0, SlotState.Full),
             new(2, -1, SlotState.Lock),
             new(3, -1, SlotState.Lock),
             new(4, -1, SlotState.Lock),
@@ -29,6 +29,8 @@ namespace YG
         public List<Goods> items = new();
         public int selectedBackgroundIndex = 0;
         public int selectedItemSkinIndex = 0;
+        public bool isMusicPlaying = true;
+        public bool isTutorialCompleted = false;
 
         private readonly int maxLevel = 12;
         private readonly List<int> prices = new()
@@ -122,8 +124,8 @@ namespace YG
             coins = 1500;
             level = 1;
             slots = new SlotData[] {
-                new(0, -1, SlotState.Empty),
-                new(1, -1, SlotState.Empty),
+                new(0, 0, SlotState.Full),
+                new(1, 0, SlotState.Full),
                 new(2, -1, SlotState.Lock),
                 new(3, -1, SlotState.Lock),
                 new(4, -1, SlotState.Lock),

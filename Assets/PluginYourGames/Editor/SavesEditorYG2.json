@@ -7,19 +7,19 @@
         false,
         false
     ],
-    "idSave": 181,
+    "idSave": 246,
     "coins": 1500,
     "level": 1,
     "slots": [
         {
             "id": 0,
-            "currentItemId": -1,
-            "state": 0
+            "currentItemId": 0,
+            "state": 1
         },
         {
             "id": 1,
-            "currentItemId": -1,
-            "state": 0
+            "currentItemId": 0,
+            "state": 1
         },
         {
             "id": 2,
@@ -79,10 +79,10 @@
             },
             "price": 0,
             "uiImage": {
-                "instanceID": -43018
+                "instanceID": -114242
             },
             "uiText": {
-                "instanceID": -43010
+                "instanceID": -114234
             }
         },
         {
@@ -91,10 +91,10 @@
             },
             "price": 1200,
             "uiImage": {
-                "instanceID": -43054
+                "instanceID": -114278
             },
             "uiText": {
-                "instanceID": -43046
+                "instanceID": -114270
             }
         },
         {
@@ -103,10 +103,10 @@
             },
             "price": 4800,
             "uiImage": {
-                "instanceID": -43090
+                "instanceID": -114314
             },
             "uiText": {
-                "instanceID": -43082
+                "instanceID": -114306
             }
         },
         {
@@ -115,10 +115,10 @@
             },
             "price": 12900,
             "uiImage": {
-                "instanceID": -43126
+                "instanceID": -114350
             },
             "uiText": {
-                "instanceID": -43118
+                "instanceID": -114342
             }
         },
         {
@@ -127,10 +127,10 @@
             },
             "price": 39400,
             "uiImage": {
-                "instanceID": -43162
+                "instanceID": -114386
             },
             "uiText": {
-                "instanceID": -43154
+                "instanceID": -114378
             }
         },
         {
@@ -139,10 +139,10 @@
             },
             "price": 72000,
             "uiImage": {
-                "instanceID": -43198
+                "instanceID": -114422
             },
             "uiText": {
-                "instanceID": -43190
+                "instanceID": -114414
             }
         },
         {
@@ -151,10 +151,10 @@
             },
             "price": 86000,
             "uiImage": {
-                "instanceID": -43234
+                "instanceID": -114458
             },
             "uiText": {
-                "instanceID": -43226
+                "instanceID": -114450
             }
         },
         {
@@ -163,10 +163,10 @@
             },
             "price": 144100,
             "uiImage": {
-                "instanceID": -43270
+                "instanceID": -114494
             },
             "uiText": {
-                "instanceID": -43262
+                "instanceID": -114486
             }
         },
         {
@@ -175,10 +175,10 @@
             },
             "price": 171050,
             "uiImage": {
-                "instanceID": -43306
+                "instanceID": -114530
             },
             "uiText": {
-                "instanceID": -43298
+                "instanceID": -114522
             }
         },
         {
@@ -187,10 +187,10 @@
             },
             "price": 210700,
             "uiImage": {
-                "instanceID": -43342
+                "instanceID": -114566
             },
             "uiText": {
-                "instanceID": -43334
+                "instanceID": -114558
             }
         },
         {
@@ -199,10 +199,10 @@
             },
             "price": 244100,
             "uiImage": {
-                "instanceID": -43378
+                "instanceID": -114602
             },
             "uiText": {
-                "instanceID": -43370
+                "instanceID": -114594
             }
         },
         {
@@ -211,10 +211,10 @@
             },
             "price": 299900,
             "uiImage": {
-                "instanceID": -43414
+                "instanceID": -114638
             },
             "uiText": {
-                "instanceID": -43406
+                "instanceID": -114630
             }
         },
         {
@@ -223,10 +223,10 @@
             },
             "price": 360000,
             "uiImage": {
-                "instanceID": -43450
+                "instanceID": -114674
             },
             "uiText": {
-                "instanceID": -43442
+                "instanceID": -114666
             }
         }
     ],
@@ -237,10 +237,10 @@
             },
             "price": 0,
             "uiImage": {
-                "instanceID": -43486
+                "instanceID": -114710
             },
             "uiText": {
-                "instanceID": -43478
+                "instanceID": -114702
             }
         },
         {
@@ -249,10 +249,10 @@
             },
             "price": 12500,
             "uiImage": {
-                "instanceID": -43522
+                "instanceID": -114746
             },
             "uiText": {
-                "instanceID": -43514
+                "instanceID": -114738
             }
         },
         {
@@ -261,10 +261,10 @@
             },
             "price": 86000,
             "uiImage": {
-                "instanceID": -43558
+                "instanceID": -114782
             },
             "uiText": {
-                "instanceID": -43550
+                "instanceID": -114774
             }
         },
         {
@@ -273,13 +273,15 @@
             },
             "price": 192000,
             "uiImage": {
-                "instanceID": -43594
+                "instanceID": -114818
             },
             "uiText": {
-                "instanceID": -43586
+                "instanceID": -114810
             }
         }
     ],
     "selectedBackgroundIndex": 0,
-    "selectedItemSkinIndex": 0
+    "selectedItemSkinIndex": 0,
+    "isMusicPlaying": false,
+    "isTutorialCompleted": true
 }
