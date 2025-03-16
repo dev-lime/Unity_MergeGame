@@ -65,7 +65,11 @@ public class TutorialManager : MonoBehaviour
         isMoving = true; // Запуск анимации
 
         // Создать волну в начальной точке
-        CreatePulseWave(startPosition);
+        try
+        {
+            CreatePulseWave(startPosition);
+        }
+        catch { }
     }
 
     void AnimateFingerIcon()

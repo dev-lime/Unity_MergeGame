@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1224339957885534856}
   - component: {fileID: 7279234096973901286}
   - component: {fileID: 7376716048915010472}
+  - component: {fileID: 6416064339502485036}
   m_Layer: 0
   m_Name: BonusObjectParticle
   m_TagString: Untagged
@@ -4833,3 +4834,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6416064339502485036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773084388995184662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07de8322d4940a479e84272cb325f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

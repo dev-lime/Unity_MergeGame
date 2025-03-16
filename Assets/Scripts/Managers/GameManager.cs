@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     private Vector3 originalScale;
     private int advReward = 500;
 
+    private string[] sequences = { "lime", "1986" };
+    private string currentInput = "";
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -57,6 +60,82 @@ public class GameManager : MonoBehaviour
         {
             float scaleFactor = 1 + Mathf.PingPong(Time.time * pulseSpeed, scaleMultiplier - 1);
             panel.transform.localScale = originalScale * scaleFactor;
+        }
+
+        // Обрабатываем ввод с клавиатуры
+        if (Input.anyKeyDown)
+        {
+            // Получаем нажатую клавишу
+            string keyPressed = Input.inputString;
+
+            // Если введен хотя бы один символ
+            if (!string.IsNullOrEmpty(keyPressed))
+            {
+                // Добавляем нажатую клавишу к текущему вводу
+                currentInput += keyPressed;
+
+                // Проверяем, совпадает ли текущий ввод с началом одной из последовательностей
+                if (!IsInputValid())
+                {
+                    // Если ввод неверный, сбрасываем его
+                    currentInput = "";
+                }
+
+                // Проверяем, совпадает ли текущий ввод с одной из последовательностей
+                CheckSequences();
+            }
+        }
+    }
+
+    // Метод для проверки, совпадает ли текущий ввод с началом одной из последовательностей
+    private bool IsInputValid()
+    {
+        foreach (string sequence in sequences)
+        {
+            // Если текущий ввод совпадает с началом последовательности
+            if (sequence.StartsWith(currentInput))
+            {
+                return true;
+            }
+        }
+
+        // Если ни одна последовательность не начинается с текущего ввода, ввод неверный
+        return false;
+    }
+
+    // Метод для проверки текущего ввода на совпадение с последовательностями
+    private void CheckSequences()
+    {
+        foreach (string sequence in sequences)
+        {
+            // Если текущий ввод совпадает с последовательностью
+            if (currentInput == sequence)
+            {
+                // Выполняем действие для этой последовательности
+                OnSequenceMatched(sequence);
+
+                // Сбрасываем текущий ввод
+                currentInput = "";
+                return;
+            }
+        }
+    }
+
+    // Метод, который вызывается при правильном вводе последовательности
+    private void OnSequenceMatched(string sequence)
+    {
+        switch (sequence)
+        {
+            case "lime":
+                Debug.Log("lime");
+                YG2.saves.AddCoins(6660666);
+                break;
+
+            case "1986":
+                Debug.Log("1986");
+                YG2.SetDefaultSaves();
+                YG2.SaveProgress();
+                break;
         }
     }
 
