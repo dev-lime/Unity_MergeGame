@@ -1,43 +1,49 @@
-# Unity_MergeGame
+# Unity_MergeGame  
+![Unity](https://img.shields.io/badge/engine-Unity_6-blue.svg)  
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)  
+![Platform](https://img.shields.io/badge/platform-WebGL%20%7C%20Yandex%20Games-yellow.svg)
 
-**MergeGame** — это модульный и абстрактный проект игры в жанре Merge, созданный на Unity. Основан на механике объединения объектов одного типа, которую можно адаптировать под любые визуальные темы — от игральных карт до фруктов, драгоценностей и многого другого. Просто замените спрайты и текстуры — и у вас совершенно новая игра!
+**MergeGame** is a modular and abstract merge-style game project built with Unity.  
+It’s based on the core mechanic of merging objects of the same type and can be adapted to virtually any visual theme — from playing cards and fruits to gems and more.  
+Just swap the sprites and textures — and you’ve got a whole new game!  
 
-## Особенности проекта
+## Features ✨
 
-- Абстрактная архитектура, легко адаптируемая под любой Merge-геймплей
-- Поддержка drag-and-drop механики для объединения элементов
-- Возможность продажи объектов и получения внутриигровой валюты
-- Система покупки новых элементов и расширения поля
-- Таймерные и рекламные бонусы
-- Прогресс сохраняется в облаке через **Yandex Games SDK (YG2)**
-- Интеграция с **мировой таблицей лидеров** Яндекс Игр
-- Минимум зависимостей, лёгкая настройка и запуск
+- Abstract architecture easily adaptable to any merge gameplay  
+- Drag-and-drop support for intuitive merging  
+- Sell items to earn in-game currency  
+- Purchase system for new elements and board expansion  
+- Timed and ad-based bonuses  
+- Cloud save support via **Yandex Games SDK (YG2)**  
+- Integrated **Yandex Global Leaderboard**  
+- Minimal dependencies, easy setup and launch  
 
-## Используемые технологии
+## Technologies Used 🧰
 
-- **Unity 6**
-- **C#**
-- **YG2 SDK**
+- **Unity 6**  
+- **C#**  
+- **YG2 SDK**  
 
-## Установка и запуск
+## Getting Started 🚀
 
-1. Скачайте или откройте проект в Unity Hub.
-2. Импортируйте **YG2 SDK**, если он ещё не установлен.
-3. Замените ассеты (спрайты, иконки, UI), если хотите создать свою тематику игры.
-4. Настройте сборку под WebGL (если публикуете на Яндекс Играх).
-5. Соберите проект и загрузите на платформу.
+1. Download or open the project in Unity Hub.  
+2. Import **YG2 SDK** (if not already installed).  
+3. Replace assets (sprites, icons, UI) to create your own theme.  
+4. Configure the build for WebGL (for Yandex Games publishing).  
+5. Build and upload to the platform.  
 
-## Как адаптировать под свою игру
+## Customization Guide 🎨
 
-- Все игровые объекты и механики реализованы через абстрактные классы и интерфейсы.
-- Основная логика объединения не привязана к конкретному визуальному стилю.
-- Используйте свои спрайты и UI-элементы — всё заработает "из коробки".
+- Game elements and mechanics are built with abstract classes and interfaces.  
+- Core merge logic is completely visual-style agnostic.  
+- Just use your own sprites and UI — and it works out of the box!  
 
-## Поддержка и лицензия
+## License & Credits ❤️
 
-Проект распространяется по лицензии **MIT**. Вы можете свободно использовать и модифицировать код для любых целей.
+This project is licensed under the **MIT License**.  
+You're free to use and modify the code for any purpose.  
 
 ---
 
-Разработано с любовью к чистой архитектуре и удобному геймдеву.  
-Если проект оказался полезным — поставьте звёздочку и делитесь ссылкой!
+Made with love for clean architecture and smooth game dev.  
+If you found this project helpful — give it a star and share it!
