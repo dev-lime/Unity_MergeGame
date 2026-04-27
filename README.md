@@ -1,7 +1,5 @@
 # Unity_MergeGame  
-![Unity](https://img.shields.io/badge/engine-Unity_6-blue.svg)  
-![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)  
-![Platform](https://img.shields.io/badge/platform-WebGL%20%7C%20Yandex%20Games-yellow.svg)
+![Unity](https://img.shields.io/badge/engine-Unity_6-blue.svg) ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg) ![Platform](https://img.shields.io/badge/platform-WebGL%20%7C%20Yandex%20Games-yellow.svg)
 
 **MergeGame** is a modular and abstract merge-style game project built with Unity.  
 It’s based on the core mechanic of merging objects of the same type and can be adapted to virtually any visual theme — from playing cards and fruits to gems and more.  
